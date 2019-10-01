@@ -12,3 +12,9 @@ keypoint detection을 인식하여 딥러닝을 기반으로 한 홈트레이닝
 배진우  
 신승윤  
 유성근  
+
+## TODO
+- [x] pose estimation - proto
+- [ ] pose estimation - more accurate ver
+- [ ] PyQt GUI
+- [ ] person detection
