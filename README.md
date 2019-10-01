@@ -14,7 +14,8 @@ keypoint detection을 인식하여 딥러닝을 기반으로 한 홈트레이닝
 유성근  
 
 ## TODO
-- [x] pose estimation - proto
-- [ ] pose estimation - more accurate ver
+- [x] keypoint detection - proto
+- [ ] keypoint detection - more accurate ver
 - [ ] PyQt GUI
 - [ ] person detection
+- [ ] pose estimation (LSTM)
