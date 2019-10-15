@@ -15,9 +15,13 @@ keypoint detection을 인식하여 딥러닝을 기반으로 한 홈트레이닝
 
 ## TODO
 - [x] keypoint detection - proto
-  - infer time : 1.3 (hourglass stack 2)
+- infer time : 1.3 (hourglass stack 2)
+- [x] PyQt GUI proto
+  - [x] Make Logo
+  - [x] put image in GUI
+  - [x] button event
 - [ ] keypoint detection - more accurate ver
-- [ ] PyQt GUI
+- [ ] PyQt GUI - more accurate ver
 - [ ] person detection
 - [ ] pose estimation (LSTM)
 
