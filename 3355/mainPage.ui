@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>homePT</class>
+ <widget class="QDialog" name="homePT">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>850</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>HomePT와 함께 하는 올바른 홈트레이닝 라이프</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="heart.qrc">
+    <normaloff>:/icon_heart/heart.png</normaloff>:/icon_heart/heart.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:&quot;Aliceblue&quot;;</string>
+  </property>
+  <widget class="QPushButton" name="howToUse">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>360</y>
+     <width>180</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:&quot;slateblue&quot;; color:&quot;white&quot;;font: 16pt&quot;경기천년제목M Medium&quot;;</string>
+   </property>
+   <property name="text">
+    <string>How To Use</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="startButton">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>360</y>
+     <width>180</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:&quot;Royalblue&quot;; color:&quot;white&quot;;font: 16pt&quot;경기천년제목M Medium&quot;;</string>
+   </property>
+   <property name="text">
+    <string>START</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QWidget" name="mainLogo" native="true">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>120</y>
+     <width>400</width>
+     <height>300</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/logo/logo.png);</string>
+   </property>
+  </widget>
+  <zorder>mainLogo</zorder>
+  <zorder>howToUse</zorder>
+  <zorder>startButton</zorder>
+ </widget>
+ <resources>
+  <include location="heart.qrc"/>
+  <include location="logo.qrc"/>
+ </resources>
+ <connections/>
+ <slots>
+  <signal>selectMenu()</signal>
+  <slot>startSelectMenu()</slot>
+ </slots>
+</ui>

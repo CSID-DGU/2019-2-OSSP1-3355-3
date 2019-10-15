@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>homePT</class>
+ <widget class="QDialog" name="homePT">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>850</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>홈PT와 함께 하는 올바른 홈트레이닝 라이프</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../오유민/Pictures/Saved Pictures/hart.png</normaloff>../../../오유민/Pictures/Saved Pictures/hart.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">image: url(:/newPrefix/bono.jpg);</string>
+  </property>
+  <widget class="QLabel" name="purposePhrases">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>130</y>
+     <width>700</width>
+     <height>140</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 26pt&quot;경기천년제목M Medium&quot;; color:&quot;black&quot;;</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:26pt; font-weight:600;&quot;&gt;홈PT와 올바른 홈트레이닝 라이프를 함께 해요!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="howToUse">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>350</y>
+     <width>180</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:&quot;orange&quot;; color:&quot;white&quot;;font: 16pt&quot;경기천년제목M Medium&quot;;</string>
+   </property>
+   <property name="text">
+    <string>How To Use</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="startButton">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>350</y>
+     <width>180</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:&quot;Tomato&quot;; color:&quot;white&quot;;font: 16pt&quot;경기천년제목M Medium&quot;;</string>
+   </property>
+   <property name="text">
+    <string>START</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="button.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="exercise2">
+    <file>ex2.jpg</file>
+  </qresource>
+</RCC>
