@@ -21,7 +21,7 @@ keypoint detection을 인식하여 딥러닝을 기반으로 한 홈트레이닝
   - [x] put image in GUI
   - [ ] button event
 - [ ] keypoint detection - more accurate ver
-- [ ] PyQt GUI - more accurate ver
+- [ ] PyQt GUI
 - [ ] person detection
 - [ ] pose estimation (LSTM)
 
