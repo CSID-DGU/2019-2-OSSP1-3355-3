@@ -23,6 +23,7 @@ keypoint detection을 인식하여 딥러닝을 기반으로 한 홈트레이닝
   - [x] Make Logo
   - [x] put image in GUI
   - [x] button event
+  - [x] file upload
 - [ ] keypoint detection - more accurate ver
 - [ ] PyQt GUI
 - [ ] person detection
