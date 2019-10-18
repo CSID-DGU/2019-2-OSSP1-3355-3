@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 # 메인 페이지
 class Ui_homePT(object):
@@ -55,6 +56,7 @@ class Ui_homePT(object):
     def start_clicked(self):
         homePT.close()
         selectEx.show()
+
 
     # retranslateUi 함수 선언
     def retranslateUi(self, homePT):
@@ -118,6 +120,13 @@ class Ui_selectExercise(object):
         self.retranslateUi(selectExercise)
         QtCore.QMetaObject.connectSlotsByName(selectExercise)
 
+        # 버튼 이벤트 - exButton1 버튼 클릭 시
+        self.exButton1.clicked.connect(self.ex1_clicked)  # ex1_clicked 함수 호출
+
+        # ex1_clicked 함수 선언 - 메인 페이지에서 운동 선택 페이지로 전환
+    def ex1_clicked(self):
+        window.show()
+
     # retranslateUi 함수 선언
     def retranslateUi(self, selectExercise):
         _translate = QtCore.QCoreApplication.translate
@@ -125,6 +134,29 @@ class Ui_selectExercise(object):
         self.selectTitle.setText(_translate("selectExercise", "<html><head/><body><p align=\"center\">원하는 운동을 선택해주세요.</p></body></html>"))
         self.exButton1.setText(_translate("selectExercise", "플랭크"))
         self.exButton2.setText(_translate("selectExercise", "스쿼트"))
+
+class MyWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setupUI()
+
+    def setupUI(self):
+        self.setGeometry(800, 200, 300, 300)
+        self.setWindowTitle("PyStock v0.1")
+
+        self.pushButton = QPushButton("File Open")
+        self.pushButton.clicked.connect(self.pushButtonClicked)
+        self.label = QLabel()
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.pushButton)
+        layout.addWidget(self.label)
+
+        self.setLayout(layout)
+
+    def pushButtonClicked(self):
+        fname = QFileDialog.getOpenFileName(self)
+        self.label.setText(fname[0])
 
 # main 함수
 if __name__ == "__main__":
@@ -141,5 +173,9 @@ if __name__ == "__main__":
     selectEx = QtWidgets.QDialog()
     ui2 = Ui_selectExercise()
     ui2.setupUi(selectEx)
+
+    # 파일 선택 페이지
+    window = MyWindow()
+
 
     sys.exit(app.exec_())
