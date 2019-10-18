@@ -5,7 +5,7 @@
 딥러닝 기반 운동 자세 교정 프로그램 - 
 
 ## 프로젝트 설명  
-keypoint detection을 인식하여 딥러닝을 기반으로 한 홈트레이닝 운동 자세 교정 프로그램입니다.
+keypoint detection을 인식하여 딥러닝을 기반으로 운동 자세를 교정해주는 홈트레이닝 운동 자세 교정 프로그램입니다.
 
 ## 프로그램 메인 로고
 ![logo](https://user-images.githubusercontent.com/55729131/67072681-6b6f9380-f1c0-11e9-8609-adc2d611cdc5.png)
@@ -23,7 +23,6 @@ keypoint detection을 인식하여 딥러닝을 기반으로 한 홈트레이닝
   - [x] Make Logo
   - [x] put image in GUI
   - [x] button event
-  - [x] file upload
 - [ ] keypoint detection - more accurate ver
 - [ ] PyQt GUI
 - [ ] person detection
