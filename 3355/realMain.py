@@ -57,7 +57,6 @@ class Ui_homePT(object):
         homePT.close()
         selectEx.show()
 
-
     # retranslateUi 함수 선언
     def retranslateUi(self, homePT):
         _translate = QtCore.QCoreApplication.translate
@@ -106,6 +105,7 @@ class Ui_selectExercise(object):
         self.ex1.setPixmap(pixexercise1)
         self.ex1.setText("")
         self.ex1.setObjectName("ex1")
+
         # 운동 2 이미지
         self.ex2 = QtWidgets.QLabel(selectExercise)
         self.ex2.setGeometry(QtCore.QRect(450, 170, 290, 172)) # 위치 및 사이즈 설정
@@ -125,7 +125,8 @@ class Ui_selectExercise(object):
 
         # ex1_clicked 함수 선언 - 메인 페이지에서 운동 선택 페이지로 전환
     def ex1_clicked(self):
-        window.show()
+        selectEx.close()
+        selectFi.show()
 
     # retranslateUi 함수 선언
     def retranslateUi(self, selectExercise):
@@ -135,20 +136,35 @@ class Ui_selectExercise(object):
         self.exButton1.setText(_translate("selectExercise", "플랭크"))
         self.exButton2.setText(_translate("selectExercise", "스쿼트"))
 
-class MyWindow(QWidget):
+# 파일 선택 페이지
+class SelectFile(QWidget):
     def __init__(self):
         super().__init__()
         self.setupUI()
 
     def setupUI(self):
-        self.setGeometry(800, 200, 300, 300)
-        self.setWindowTitle("PyStock v0.1")
+        self.resize(850, 600)
+        self.setWindowTitle("HomePT와 함께 하는 올바른 홈트레이닝 라이프")
 
-        self.pushButton = QPushButton("File Open")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icon_heart/heart.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.setWindowIcon(icon)
+
+        self.setStyleSheet("font: 20pt\"경기천년제목M Medium\"; background-color:\"Aliceblue\";")
+        self.textlabel = QLabel()
+        self.textlabel.setText("파일을 선택해주세요")
+        self.textlabel.setStyleSheet("color:\"black\";font: 16pt\"경기천년제목M Medium\";")
+        self.textlabel.setAlignment(QtCore.Qt.AlignCenter)
+
+        self.pushButton = QPushButton("파일 선택")
         self.pushButton.clicked.connect(self.pushButtonClicked)
+
+        self.pushButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+
         self.label = QLabel()
 
         layout = QVBoxLayout()
+        layout.addWidget(self.textlabel)
         layout.addWidget(self.pushButton)
         layout.addWidget(self.label)
 
@@ -175,7 +191,6 @@ if __name__ == "__main__":
     ui2.setupUi(selectEx)
 
     # 파일 선택 페이지
-    window = MyWindow()
-
+    selectFi = SelectFile()
 
     sys.exit(app.exec_())
