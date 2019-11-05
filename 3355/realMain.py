@@ -81,6 +81,15 @@ class Ui_selectExercise(object):
         # 스타일시트 - 배경색 설정
         selectExercise.setStyleSheet("background-color:\"Aliceblue\";")
 
+        # 홈버튼
+        icon1 = QtGui.QIcon('homeButton.png')  # 홈버튼 이미지
+        self.homeButton = QtWidgets.QPushButton(selectExercise)
+        self.homeButton.setGeometry(QtCore.QRect(20, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
+        self.homeButton.setIcon(icon1)  # 이미지 설정
+        self.homeButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
+        self.homeButton.setStyleSheet('QPushButton{border: 0px solid;}')
+        # 클릭 시 홈화면으로 이동하도록
+
         # 타이틀 문구 - 운동 선택 문구
         self.selectTitle = QtWidgets.QLabel(selectExercise)
         self.selectTitle.setGeometry(QtCore.QRect(100, 20, 650, 80)) # 위치 및 사이즈 설정
@@ -111,14 +120,6 @@ class Ui_selectExercise(object):
         self.exButton4.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
         self.exButton4.setObjectName("exButton4")
 
-        # 홈버튼
-        icon1 = QtGui.QIcon('homeButton.png')  # 홈버튼 이미지
-        self.homeButton = QtWidgets.QPushButton(selectExercise)
-        self.homeButton.setGeometry(QtCore.QRect(30, 30, 60, 60))  # 버튼 위치 및 사이즈 설정
-        self.homeButton.setIcon(icon1)  # 이미지 설정
-        self.homeButton.setIconSize(QtCore.QSize(60, 60))  # 아이콘 사이즈 조정
-        self.homeButton.setStyleSheet('QPushButton{border: 0px solid;}')
-
         # 운동 1 이미지
         self.ex1 = QtWidgets.QLabel(selectExercise)
         self.ex1.setGeometry(QtCore.QRect(100, 100, 290, 172)) # 위치 및 사이즈 설정
@@ -145,7 +146,7 @@ class Ui_selectExercise(object):
         pixexercise3 = pixex3.scaled(290, 172, QtCore.Qt.KeepAspectRatio)  # 이미지 사이즈 설정
         self.ex3.setPixmap(pixexercise3)
         self.ex3.setText("")
-        self.ex3.setObjectName("ex1")
+        self.ex3.setObjectName("ex3")
 
         # 운동 4 이미지
         self.ex4 = QtWidgets.QLabel(selectExercise)
@@ -155,7 +156,7 @@ class Ui_selectExercise(object):
         self.ex4.setPixmap(pixexercise4)
         self.ex4.setStyleSheet("background-color: rgb(255, 255, 255);")  # 라벨 배경색 설정
         self.ex4.setText("")
-        self.ex4.setObjectName("ex2")
+        self.ex4.setObjectName("ex4")
 
         # retranslateUi 함수 호출
         self.retranslateUi(selectExercise)
@@ -189,8 +190,10 @@ class SelectFile(QWidget):
         self.resize(850, 600)
         self.setWindowTitle("HomePT와 함께 하는 올바른 홈트레이닝 라이프")
 
+        # 아이콘
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icon_heart/heart.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        pixicon = QPixmap('heart.png') # 아이콘에 이미지 삽입
+        icon.addPixmap(QtGui.QPixmap(pixicon), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.setWindowIcon(icon)
 
         self.setStyleSheet("font: 20pt\"경기천년제목M Medium\"; background-color:\"Aliceblue\";")
