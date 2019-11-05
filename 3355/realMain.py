@@ -65,6 +65,7 @@ class Ui_homePT(object):
         self.startButton.setText(_translate("homePT", "START"))
 
 # 운동 선택 페이지
+
 class Ui_selectExercise(object):
     # 운동 선택 페이지 UI setup
     def setupUi(self, selectExercise):
@@ -82,25 +83,46 @@ class Ui_selectExercise(object):
 
         # 타이틀 문구 - 운동 선택 문구
         self.selectTitle = QtWidgets.QLabel(selectExercise)
-        self.selectTitle.setGeometry(QtCore.QRect(100, 50, 650, 80)) # 위치 및 사이즈 설정
+        self.selectTitle.setGeometry(QtCore.QRect(100, 20, 650, 80)) # 위치 및 사이즈 설정
         self.selectTitle.setStyleSheet("font: 26pt\"경기천년제목M Medium\"; color:\"black\";")
         self.selectTitle.setObjectName("selectTitle")
 
         # 운동 1 버튼
         self.exButton1 = QtWidgets.QPushButton(selectExercise)
-        self.exButton1.setGeometry(QtCore.QRect(100, 360, 290, 40)) # 버튼 위치 및 사이즈 설정
+        self.exButton1.setGeometry(QtCore.QRect(100, 280, 290, 40)) # 버튼 위치 및 사이즈 설정
         self.exButton1.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
         self.exButton1.setObjectName("exButton1")
+
         # 운동 2 버튼
         self.exButton2 = QtWidgets.QPushButton(selectExercise)
-        self.exButton2.setGeometry(QtCore.QRect(450, 360, 290, 40)) # 버튼 위치 및 사이즈 설정
+        self.exButton2.setGeometry(QtCore.QRect(450, 280, 290, 40)) # 버튼 위치 및 사이즈 설정
         self.exButton2.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
         self.exButton2.setObjectName("exButton2")
 
+        # 운동 3 버튼
+        self.exButton3 = QtWidgets.QPushButton(selectExercise)
+        self.exButton3.setGeometry(QtCore.QRect(100, 510, 290, 40))  # 버튼 위치 및 사이즈 설정
+        self.exButton3.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.exButton3.setObjectName("exButton3")
+
+        # 운동 4 버튼
+        self.exButton4 = QtWidgets.QPushButton(selectExercise)
+        self.exButton4.setGeometry(QtCore.QRect(450, 510, 290, 40)) # 버튼 위치 및 사이즈 설정
+        self.exButton4.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.exButton4.setObjectName("exButton4")
+
+        # 홈버튼
+        icon1 = QtGui.QIcon('homeButton.png')  # 홈버튼 이미지
+        self.homeButton = QtWidgets.QPushButton(selectExercise)
+        self.homeButton.setGeometry(QtCore.QRect(30, 30, 60, 60))  # 버튼 위치 및 사이즈 설정
+        self.homeButton.setIcon(icon1)  # 이미지 설정
+        self.homeButton.setIconSize(QtCore.QSize(60, 60))  # 아이콘 사이즈 조정
+        self.homeButton.setStyleSheet('QPushButton{border: 0px solid;}')
+
         # 운동 1 이미지
         self.ex1 = QtWidgets.QLabel(selectExercise)
-        self.ex1.setGeometry(QtCore.QRect(100, 170, 290, 172)) # 위치 및 사이즈 설정
-        pixex1 = QPixmap('ex1.png') # 이미지 삽입
+        self.ex1.setGeometry(QtCore.QRect(100, 100, 290, 172)) # 위치 및 사이즈 설정
+        pixex1 = QPixmap('pullup.jpg') # 이미지 삽입
         pixexercise1 = pixex1.scaled(290, 172, QtCore.Qt.KeepAspectRatio) # 이미지 사이즈 설정
         self.ex1.setPixmap(pixexercise1)
         self.ex1.setText("")
@@ -108,13 +130,32 @@ class Ui_selectExercise(object):
 
         # 운동 2 이미지
         self.ex2 = QtWidgets.QLabel(selectExercise)
-        self.ex2.setGeometry(QtCore.QRect(450, 170, 290, 172)) # 위치 및 사이즈 설정
-        pixex2 = QPixmap('ex2.jpg') # 이미지 삽입
+        self.ex2.setGeometry(QtCore.QRect(450, 100, 290, 172)) # 위치 및 사이즈 설정
+        pixex2 = QPixmap('squat.jpg') # 이미지 삽입
         pixexercise2 = pixex2.scaled(290, 172, QtCore.Qt.KeepAspectRatio) # 이미지 사이즈 설정
         self.ex2.setPixmap(pixexercise2)
         self.ex2.setStyleSheet("background-color: rgb(255, 255, 255);") # 라벨 배경색 설정
         self.ex2.setText("")
         self.ex2.setObjectName("ex2")
+
+        # 운동 3 이미지
+        self.ex3 = QtWidgets.QLabel(selectExercise)
+        self.ex3.setGeometry(QtCore.QRect(100, 330, 290, 172))  # 위치 및 사이즈 설정
+        pixex3 = QPixmap('plank.png')  # 이미지 삽입
+        pixexercise3 = pixex3.scaled(290, 172, QtCore.Qt.KeepAspectRatio)  # 이미지 사이즈 설정
+        self.ex3.setPixmap(pixexercise3)
+        self.ex3.setText("")
+        self.ex3.setObjectName("ex1")
+
+        # 운동 4 이미지
+        self.ex4 = QtWidgets.QLabel(selectExercise)
+        self.ex4.setGeometry(QtCore.QRect(450, 330, 290, 172))  # 위치 및 사이즈 설정
+        pixex4 = QPixmap('runge.jpg')  # 이미지 삽입
+        pixexercise4 = pixex4.scaled(290, 172, QtCore.Qt.KeepAspectRatio)  # 이미지 사이즈 설정
+        self.ex4.setPixmap(pixexercise4)
+        self.ex4.setStyleSheet("background-color: rgb(255, 255, 255);")  # 라벨 배경색 설정
+        self.ex4.setText("")
+        self.ex4.setObjectName("ex2")
 
         # retranslateUi 함수 호출
         self.retranslateUi(selectExercise)
@@ -133,8 +174,10 @@ class Ui_selectExercise(object):
         _translate = QtCore.QCoreApplication.translate
         selectExercise.setWindowTitle(_translate("selectExercise", "HomePT와 함께 하는 올바른 홈트레이닝 라이프"))
         self.selectTitle.setText(_translate("selectExercise", "<html><head/><body><p align=\"center\">원하는 운동을 선택해주세요.</p></body></html>"))
-        self.exButton1.setText(_translate("selectExercise", "플랭크"))
+        self.exButton1.setText(_translate("selectExercise", "풀업"))
         self.exButton2.setText(_translate("selectExercise", "스쿼트"))
+        self.exButton3.setText(_translate("selectExercise", "플랭크"))
+        self.exButton4.setText(_translate("selectExercise", "런지"))
 
 # 파일 선택 페이지
 class SelectFile(QWidget):
