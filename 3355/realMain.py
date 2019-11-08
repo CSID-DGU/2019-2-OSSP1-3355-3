@@ -17,12 +17,13 @@ class Ui_homePT(object):
 
         # 스타일시트 - 배경색 설정
         homePT.setStyleSheet("background-color:\"Aliceblue\";")
+        #homePT.setStyleSheet("background-image: url('hometraining3.jpg')")
 
         # How To Use 버튼
         self.howToUse = QtWidgets.QPushButton(homePT)
         self.howToUse.setGeometry(QtCore.QRect(430, 360, 180, 60)) # 버튼 위치 및 사이즈 설정
         self.howToUse.setAutoFillBackground(False)
-        self.howToUse.setStyleSheet("background-color:\"slateblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.howToUse.setStyleSheet("background-color:\"Slateblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
         self.howToUse.setObjectName("howToUse")
 
         # START 버튼
@@ -34,6 +35,7 @@ class Ui_homePT(object):
         self.startButton.setObjectName("startButton")
 
         # 메인 로고 이미지
+
         self.mainlogo = QtWidgets.QLabel(homePT)
         self.mainlogo.setGeometry(QtCore.QRect(230, 120, 380, 300)) # 위치 및 사이즈 설정
         pixmap = QPixmap('logo.png') # 이미지 삽입
@@ -196,26 +198,40 @@ class SelectFile(QWidget):
         icon.addPixmap(QtGui.QPixmap(pixicon), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.setWindowIcon(icon)
 
-        self.setStyleSheet("font: 20pt\"경기천년제목M Medium\"; background-color:\"Aliceblue\";")
+        # 홈버튼
+        icon1 = QtGui.QIcon('homeButton.png')  # 홈버튼 이미지
+        self.homeButton = QtWidgets.QPushButton(self)
+        self.homeButton.setGeometry(QtCore.QRect(20, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
+        self.homeButton.setIcon(icon1)  # 이미지 설정
+        self.homeButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
+        self.homeButton.setStyleSheet('QPushButton{border: 0px solid;}')
+        # 클릭 시 홈화면으로 이동하도록
+
+        # 스타일시트
+        self.setStyleSheet("font: 24pt\"경기천년제목M Medium\"; background-color:\"Aliceblue\";")
+
+        # 파일 선택 문구
         self.textlabel = QLabel()
         self.textlabel.setText("파일을 선택해주세요")
         self.textlabel.setStyleSheet("color:\"black\";font: 16pt\"경기천년제목M Medium\";")
         self.textlabel.setAlignment(QtCore.Qt.AlignCenter)
 
+        # 파일 선택 버튼
         self.pushButton = QPushButton("파일 선택")
-        self.pushButton.clicked.connect(self.pushButtonClicked)
-
+        self.pushButton.clicked.connect(self.pushButtonClicked) # 버튼 클릭 시 함수 호출
         self.pushButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
 
         self.label = QLabel()
 
         layout = QVBoxLayout()
+        layout.addWidget(self.homeButton)
         layout.addWidget(self.textlabel)
         layout.addWidget(self.pushButton)
         layout.addWidget(self.label)
 
         self.setLayout(layout)
 
+    # 파일 선택 버튼 클릭 시 수행되는 함수
     def pushButtonClicked(self):
         fname = QFileDialog.getOpenFileName(self)
         self.label.setText(fname[0])
