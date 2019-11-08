@@ -35,7 +35,6 @@ class Ui_homePT(object):
         self.startButton.setObjectName("startButton")
 
         # 메인 로고 이미지
-
         self.mainlogo = QtWidgets.QLabel(homePT)
         self.mainlogo.setGeometry(QtCore.QRect(230, 120, 380, 300)) # 위치 및 사이즈 설정
         pixmap = QPixmap('logo.png') # 이미지 삽입
@@ -75,7 +74,6 @@ class Ui_homePT(object):
         self.startButton.setText(_translate("homePT", "START"))
 
 # 운동 선택 페이지
-
 class Ui_selectExercise(object):
     # 운동 선택 페이지 UI setup
     def setupUi(self, selectExercise):
@@ -309,6 +307,13 @@ class SelectFile(QWidget):
 # How to Use step 1 페이지
 class HowtoUse_step1(object):
     def setupUi(self, HowtoUse):
+
+        # 아이콘
+        icon = QtGui.QIcon()
+        pixicon = QPixmap('heart.png')  # 아이콘에 이미지 삽입
+        icon.addPixmap(QtGui.QPixmap(pixicon), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        HowtoUse.setWindowIcon(icon)
+
         HowtoUse.setObjectName("selectExercise")
         HowtoUse.resize(850, 600)
         icon = QtGui.QIcon()
@@ -355,6 +360,13 @@ class HowtoUse_step1(object):
 # How to Use step 2 페이지
 class HowtoUse_step2(object):
     def setupUi(self, HowtoUse):
+
+        # 아이콘
+        icon = QtGui.QIcon()
+        pixicon = QPixmap('heart.png')  # 아이콘에 이미지 삽입
+        icon.addPixmap(QtGui.QPixmap(pixicon), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        how2.setWindowIcon(icon)
+
         HowtoUse.setObjectName("selectExercise")
         HowtoUse.resize(850, 600)
         icon = QtGui.QIcon()
@@ -412,6 +424,13 @@ class HowtoUse_step2(object):
 # How to Use step 3 페이지
 class HowtoUse_step3(object):
     def setupUi(self, HowtoUse):
+
+        # 아이콘
+        icon = QtGui.QIcon()
+        pixicon = QPixmap('heart.png')  # 아이콘에 이미지 삽입
+        icon.addPixmap(QtGui.QPixmap(pixicon), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        how3.setWindowIcon(icon)
+
         HowtoUse.setObjectName("selectExercise")
         HowtoUse.resize(850, 600)
         icon = QtGui.QIcon()
