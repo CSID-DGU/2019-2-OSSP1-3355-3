@@ -16,8 +16,7 @@ class Ui_homePT(object):
         homePT.setWindowIcon(icon)
 
         # 스타일시트 - 배경색 설정
-        homePT.setStyleSheet("background-color:\"Aliceblue\";")
-        #homePT.setStyleSheet("background-image: url('hometraining3.jpg')")
+        homePT.setStyleSheet("QWidget#homePT {border-image: url(trainingimage.jpg) 0 0 0 0 stretch stretch;}")
 
         # How To Use 버튼
         self.howToUse = QtWidgets.QPushButton(homePT)
@@ -109,7 +108,7 @@ class Ui_selectExercise(object):
 
         # 타이틀 문구 - 운동 선택 문구
         self.selectTitle = QtWidgets.QLabel(selectExercise)
-        self.selectTitle.setGeometry(QtCore.QRect(100, 20, 650, 80)) # 위치 및 사이즈 설정
+        self.selectTitle.setGeometry(QtCore.QRect(100, 10, 650, 80)) # 위치 및 사이즈 설정
         self.selectTitle.setStyleSheet("font: 26pt\"경기천년제목M Medium\"; color:\"black\";")
         self.selectTitle.setObjectName("selectTitle")
 
@@ -197,17 +196,17 @@ class Ui_selectExercise(object):
         # 버튼 이벤트 - exButton4 버튼 클릭 시
         self.exButton4.clicked.connect(self.ex_clicked)  # ex_clicked 함수 호출
 
-        # home_clicked 함수 선언 - 메인 페이지로 돌아감
+    # home_clicked 함수 선언 - 메인 페이지로 돌아감
     def home_clicked(self):
         selectEx.close()
         homePT.show()
 
-        # back_clicked 함수 선언 - 이전 페이지로 돌아감
+    # back_clicked 함수 선언 - 이전 페이지로 돌아감
     def back_clicked(self):
         selectEx.close()
         homePT.show()
 
-        # ex_clicked 함수 선언 - 메인 페이지에서 운동 선택 페이지로 전환
+     # ex_clicked 함수 선언 - 운동 선택 페이지로 전환
     def ex_clicked(self):
         selectEx.close()
         selectFi.show()
@@ -261,18 +260,18 @@ class SelectFile(QWidget):
 
         # 파일 선택 문구
         self.textlabel = QtWidgets.QLabel(self)
-        self.textlabel.setText("파일을 선택해주세요")
-        self.textlabel.setGeometry(QtCore.QRect(220, 200, 420, 50))
-        self.textlabel.setStyleSheet("color:\"black\";font: 30pt\"경기천년제목M Medium\";")
+        self.textlabel.setText("해당 운동 영상을 선택해주세요.")
+        self.textlabel.setGeometry(QtCore.QRect(225, 220, 440, 50))
+        self.textlabel.setStyleSheet("color:\"black\";font: 26pt\"경기천년제목M Medium\";")
         self.textlabel.setAlignment(QtCore.Qt.AlignCenter)
 
         # 파일 선택 버튼
         self.pushButton = QtWidgets.QPushButton(self)
-        self.pushButton.setGeometry(QtCore.QRect(340, 330, 160, 40))  # 버튼 위치 및 사이즈 설정
-        self.pushButton.setText("파일 선택")
+        self.pushButton.setGeometry(QtCore.QRect(225, 300, 440, 40))  # 버튼 위치 및 사이즈 설정
+        self.pushButton.setText("동영상 파일 불러오기")
         self.pushButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
 
-        # 선택된 파일 위치
+        # 선택된 파일 위치 *********************************없어도 됨
         self.label = QtWidgets.QLabel(self)
         self.label.setGeometry(QtCore.QRect(150, 500, 700, 50))
         self.label.setStyleSheet("color:\"black\";font: 12pt\"경기천년제목M Medium\";")
@@ -287,77 +286,107 @@ class SelectFile(QWidget):
         # 버튼 이벤트 - 파일 선택 클릭 시
         self.pushButton.clicked.connect(self.pushButtonClicked)
 
-        # home_clicked 함수 선언 - 메인 페이지로 돌아감
+    # home_clicked 함수 선언 - 메인 페이지로 돌아감
     def home_clicked(self):
         selectFi.close()
         homePT.show()
 
-        # back_clicked 함수 선언 - 이전 페이지로 돌아감
+    # back_clicked 함수 선언 - 이전 페이지로 돌아감
     def back_clicked(self):
         selectFi.close()
         selectEx.show()
 
-    # 파일 선택 버튼 클릭 시 수행되는 함수
+    # pushButtonClicked 함수 선언 - 파일 불러오기 창 띄우기
     def pushButtonClicked(self):
         fname = QFileDialog.getOpenFileName(self)
         self.label.setText(fname[0])
 
 # How to Use step 1 페이지
 class HowtoUse_step1(object):
-    def setupUi(self, HowtoUse):
+    def setupUi(self, how1):
 
         # 아이콘
         icon = QtGui.QIcon()
         pixicon = QPixmap('heart.png')  # 아이콘에 이미지 삽입
         icon.addPixmap(QtGui.QPixmap(pixicon), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        HowtoUse.setWindowIcon(icon)
+        how1.setWindowIcon(icon)
 
-        HowtoUse.setObjectName("selectExercise")
-        HowtoUse.resize(850, 600)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icon_heart/heart.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        HowtoUse.setWindowIcon(icon)
-        HowtoUse.setStyleSheet("background-color:\"Aliceblue\";")
-        self.selectTitle = QtWidgets.QLabel(HowtoUse)
-        self.selectTitle.setGeometry(QtCore.QRect(110, 450, 650, 61))
-        self.selectTitle.setStyleSheet("font: 20pt\"경기천년제목M Medium\"; color:\"black\";")
-        self.selectTitle.setObjectName("selectTitle")
-        self.Photo = QtWidgets.QWidget(HowtoUse)
-        self.Photo.setGeometry(QtCore.QRect(210, 120, 431, 301))
+        # 창 설정
+        how1.setObjectName("how1")
+        how1.resize(850, 600)
+        how1.setStyleSheet("background-color:\"Aliceblue\";")
+
+        # 홈버튼
+        icon1 = QtGui.QIcon('homebutton.png')  # 홈버튼 이미지
+        self.homeButton = QtWidgets.QPushButton(how1)
+        self.homeButton.setGeometry(QtCore.QRect(790, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
+        self.homeButton.setIcon(icon1)  # 이미지 설정
+        self.homeButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
+        self.homeButton.setStyleSheet('QPushButton{border: 0px solid;}')
+        # 클릭 시 홈화면으로 이동하도록
+
+        # step 1 이미지
+        self.Photo = QtWidgets.QWidget(how1)
+        self.Photo.setGeometry(QtCore.QRect(150, 80, 550, 350))
         self.Photo.setAutoFillBackground(False)
         self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(:/exercise1/ex1.png);")
         self.Photo.setObjectName("Photo")
-        self.nextButton = QtWidgets.QPushButton(HowtoUse)
-        self.nextButton.setGeometry(QtCore.QRect(450, 510, 131, 40))
+
+        # step 1 문구
+        self.selectTitle = QtWidgets.QLabel(how1)
+        self.selectTitle.setGeometry(QtCore.QRect(150, 445, 550, 60))
+        self.selectTitle.setStyleSheet("font: 20pt\"경기천년제목M Medium\"; color:\"black\";")
+        self.selectTitle.setObjectName("selectTitle")
+
+        # 이전 버튼
+        self.preButton = QtWidgets.QPushButton(how1)
+        self.preButton.setGeometry(QtCore.QRect(220, 510, 200, 40))
+        self.preButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.preButton.setObjectName("preButton")
+
+        # 다음 버튼
+        self.nextButton = QtWidgets.QPushButton(how1)
+        self.nextButton.setGeometry(QtCore.QRect(430, 510, 200, 40))
         self.nextButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
-        self.nextButton.setObjectName("exButton2")
-        self.widget = QtWidgets.QWidget(HowtoUse)
-        self.widget.setGeometry(QtCore.QRect(730, 20, 91, 61))
-        self.widget.setStyleSheet("background-color:\"Dodgerblue\";")
-        self.widget.setObjectName("widget")
-        self.widget_2 = QtWidgets.QWidget(HowtoUse)
-        self.widget_2.setGeometry(QtCore.QRect(30, 20, 91, 61))
-        self.widget_2.setStyleSheet("background-color:\"Dodgerblue\";")
-        self.widget_2.setObjectName("widget_2")
+        self.nextButton.setObjectName("nextButton")
 
-        self.retranslateUi(HowtoUse)
-        QtCore.QMetaObject.connectSlotsByName(HowtoUse)
+        self.retranslateUi(how1)
+        QtCore.QMetaObject.connectSlotsByName(how1)
 
+        # 버튼 이벤트 - 홈 버튼 클릭 시
+        self.homeButton.clicked.connect(self.home_clicked)
+
+        # 버튼 이벤트 - 다음 버튼 클릭 시
         self.nextButton.clicked.connect(self.next_clicked)
 
+        # 버튼 이벤트 - 이전 버튼 클릭 시
+        self.preButton.clicked.connect(self.pre_clicked)
+
+    # home_clicked 함수 선언 - 메인 페이지로 돌아감
+    def home_clicked(self):
+        selectFi.close()
+        homePT.show()
+
+    # next_clicked 함수 선언 - 다음 페이지로 넘어감
     def next_clicked(self):
         how1.close()
         how2.show()
 
-    def retranslateUi(self, HowtoUse):
+    # pre_clicked 함수 선언 - 이전 페이지로 돌아감
+    def pre_clicked(self):
+        how1.close()
+        homePT.show()
+
+    def retranslateUi(self, how1):
         _translate = QtCore.QCoreApplication.translate
-        HowtoUse.setWindowTitle(_translate("selectExercise", "HomePT와 함께 하는 올바른 홈트레이닝 라이프"))
-        self.selectTitle.setText(_translate("selectExercise", "<html><head/><body><p align=\"center\">Step1. 원하는 운동을 선택해주세요</p><p align=\"center\"><br/></p></body></html>"))
-        self.nextButton.setText(_translate("selectExercise", "next"))
+        how1.setWindowTitle(_translate("how1", "HomePT와 함께 하는 올바른 홈트레이닝 라이프"))
+        self.selectTitle.setText(_translate("how1", "<html><head/><body><p align=\"center\">Step1. 원하는 운동을 선택해주세요.</p></body></html>"))
+        self.preButton.setText(_translate("how1", "prev"))
+        self.nextButton.setText(_translate("how1", "next"))
 
 # How to Use step 2 페이지
 class HowtoUse_step2(object):
-    def setupUi(self, HowtoUse):
+    def setupUi(self, how2):
 
         # 아이콘
         icon = QtGui.QIcon()
@@ -365,63 +394,82 @@ class HowtoUse_step2(object):
         icon.addPixmap(QtGui.QPixmap(pixicon), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         how2.setWindowIcon(icon)
 
-        HowtoUse.setObjectName("selectExercise")
-        HowtoUse.resize(850, 600)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icon_heart/heart.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        HowtoUse.setWindowIcon(icon)
-        HowtoUse.setStyleSheet("background-color:\"Aliceblue\";")
-        self.selectTitle = QtWidgets.QLabel(HowtoUse)
-        self.selectTitle.setGeometry(QtCore.QRect(100, 440, 650, 61))
-        self.selectTitle.setStyleSheet("font: 20pt\"경기천년제목M Medium\"; color:\"black\";")
-        self.selectTitle.setObjectName("selectTitle")
-        self.Photo = QtWidgets.QWidget(HowtoUse)
-        self.Photo.setGeometry(QtCore.QRect(210, 120, 431, 301))
+        # 창 설정
+        how2.setObjectName("how2")
+        how2.resize(850, 600)
+        how2.setStyleSheet("background-color:\"Aliceblue\";")
+
+        # 홈버튼
+        icon1 = QtGui.QIcon('homebutton.png')  # 홈버튼 이미지
+        self.homeButton = QtWidgets.QPushButton(how2)
+        self.homeButton.setGeometry(QtCore.QRect(790, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
+        self.homeButton.setIcon(icon1)  # 이미지 설정
+        self.homeButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
+        self.homeButton.setStyleSheet('QPushButton{border: 0px solid;}')
+        # 클릭 시 홈화면으로 이동하도록
+
+        # step 2 이미지
+        self.Photo = QtWidgets.QWidget(how2)
+        self.Photo.setGeometry(QtCore.QRect(150, 80, 550, 350))
         self.Photo.setAutoFillBackground(False)
         self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(:/exercise1/ex1.png);")
         self.Photo.setObjectName("Photo")
-        self.preButton = QtWidgets.QPushButton(HowtoUse)
-        self.preButton.setGeometry(QtCore.QRect(260, 510, 141, 40))
+
+        # step 2 문구
+        self.selectTitle = QtWidgets.QLabel(how2)
+        self.selectTitle.setGeometry(QtCore.QRect(150, 445, 550, 60))
+        self.selectTitle.setStyleSheet("font: 20pt\"경기천년제목M Medium\"; color:\"black\";")
+        self.selectTitle.setObjectName("selectTitle")
+
+        # 이전 버튼
+        self.preButton = QtWidgets.QPushButton(how2)
+        self.preButton.setGeometry(QtCore.QRect(220, 510, 200, 40))
         self.preButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
-        self.preButton.setObjectName("exButton1")
-        self.nextButton = QtWidgets.QPushButton(HowtoUse)
-        self.nextButton.setGeometry(QtCore.QRect(450, 510, 131, 40))
+        self.preButton.setObjectName("preButton")
+
+        # 다음 버튼
+        self.nextButton = QtWidgets.QPushButton(how2)
+        self.nextButton.setGeometry(QtCore.QRect(430, 510, 200, 40))
         self.nextButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
-        self.nextButton.setObjectName("exButton2")
-        self.widget = QtWidgets.QWidget(HowtoUse)
-        self.widget.setGeometry(QtCore.QRect(730, 20, 91, 61))
-        self.widget.setStyleSheet("background-color:\"Dodgerblue\";")
-        self.widget.setObjectName("widget")
-        self.widget_2 = QtWidgets.QWidget(HowtoUse)
-        self.widget_2.setGeometry(QtCore.QRect(30, 20, 91, 61))
-        self.widget_2.setStyleSheet("background-color:\"Dodgerblue\";")
-        self.widget_2.setObjectName("widget_2")
+        self.nextButton.setObjectName("nextButton")
 
-        self.retranslateUi(HowtoUse)
-        QtCore.QMetaObject.connectSlotsByName(HowtoUse)
+        self.retranslateUi(how2)
+        QtCore.QMetaObject.connectSlotsByName(how2)
 
+        # 버튼 이벤트 - 홈 버튼 클릭 시
+        self.homeButton.clicked.connect(self.home_clicked)
+
+        # 버튼 이벤트 - 다음 버튼 클릭 시
         self.nextButton.clicked.connect(self.next_clicked)
+
+        # 버튼 이벤트 - 이전 버튼 클릭 시
         self.preButton.clicked.connect(self.pre_clicked)
 
+    # home_clicked 함수 선언 - 메인 페이지로 돌아감
+    def home_clicked(self):
+        selectFi.close()
+        homePT.show()
+
+    # next_clicked 함수 선언 - 다음 페이지로 넘어감
     def next_clicked(self):
         how2.close()
         how3.show()
 
+    # pre_clicked 함수 선언 - 이전 페이지로 돌아감
     def pre_clicked(self):
         how2.close()
         how1.show()
 
-    def retranslateUi(self, HowtoUse):
+    def retranslateUi(self, how2):
         _translate = QtCore.QCoreApplication.translate
-        HowtoUse.setWindowTitle(_translate("selectExercise", "HomePT와 함께 하는 올바른 홈트레이닝 라이프"))
-        self.selectTitle.setText(_translate("selectExercise",
-                                                "<html><head/><body><p align=\"center\">Step2. 동영상 파일을 불러와 주세요</p></body></html>"))
-        self.preButton.setText(_translate("selectExercise", "prev"))
-        self.nextButton.setText(_translate("selectExercise", "next"))
+        how2.setWindowTitle(_translate("how2", "HomePT와 함께 하는 올바른 홈트레이닝 라이프"))
+        self.selectTitle.setText(_translate("how2", "<html><head/><body><p align=\"center\">Step2. 해당 운동 영상을 불러와 주세요.</p></body></html>"))
+        self.preButton.setText(_translate("how2", "prev"))
+        self.nextButton.setText(_translate("how2", "next"))
 
 # How to Use step 3 페이지
 class HowtoUse_step3(object):
-    def setupUi(self, HowtoUse):
+    def setupUi(self, how3):
 
         # 아이콘
         icon = QtGui.QIcon()
@@ -429,58 +477,79 @@ class HowtoUse_step3(object):
         icon.addPixmap(QtGui.QPixmap(pixicon), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         how3.setWindowIcon(icon)
 
-        HowtoUse.setObjectName("selectExercise")
-        HowtoUse.resize(850, 600)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icon_heart/heart.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        HowtoUse.setWindowIcon(icon)
-        HowtoUse.setStyleSheet("background-color:\"Aliceblue\";")
-        self.selectTitle = QtWidgets.QLabel(HowtoUse)
-        self.selectTitle.setGeometry(QtCore.QRect(100, 440, 650, 61))
-        self.selectTitle.setStyleSheet("font: 20pt\"경기천년제목M Medium\"; color:\"black\";")
-        self.selectTitle.setObjectName("selectTitle")
-        self.Photo = QtWidgets.QWidget(HowtoUse)
-        self.Photo.setGeometry(QtCore.QRect(210, 120, 431, 301))
+        # 창 설정
+        how3.setObjectName("how3")
+        how3.resize(850, 600)
+        how3.setStyleSheet("background-color:\"Aliceblue\";")
+
+        # 홈버튼
+        icon1 = QtGui.QIcon('homebutton.png')  # 홈버튼 이미지
+        self.homeButton = QtWidgets.QPushButton(how3)
+        self.homeButton.setGeometry(QtCore.QRect(790, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
+        self.homeButton.setIcon(icon1)  # 이미지 설정
+        self.homeButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
+        self.homeButton.setStyleSheet('QPushButton{border: 0px solid;}')
+        # 클릭 시 홈화면으로 이동하도록
+
+        # step 3 이미지
+        self.Photo = QtWidgets.QWidget(how3)
+        self.Photo.setGeometry(QtCore.QRect(150, 80, 550, 350))
         self.Photo.setAutoFillBackground(False)
         self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(:/exercise1/ex1.png);")
         self.Photo.setObjectName("Photo")
-        self.preButton = QtWidgets.QPushButton(HowtoUse)
-        self.preButton.setGeometry(QtCore.QRect(260, 510, 141, 40))
+
+        # step 3 문구
+        self.selectTitle = QtWidgets.QLabel(how3)
+        self.selectTitle.setGeometry(QtCore.QRect(150, 445, 550, 60))
+        self.selectTitle.setStyleSheet("font: 20pt\"경기천년제목M Medium\"; color:\"black\";")
+        self.selectTitle.setObjectName("selectTitle")
+
+        # 이전 버튼
+        self.preButton = QtWidgets.QPushButton(how3)
+        self.preButton.setGeometry(QtCore.QRect(220, 510, 200, 40))
         self.preButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
-        self.preButton.setObjectName("exButton1")
-        self.nextButton = QtWidgets.QPushButton(HowtoUse)
-        self.nextButton.setGeometry(QtCore.QRect(450, 510, 131, 40))
+        self.preButton.setObjectName("preButton")
+
+        # 다음 버튼
+        self.nextButton = QtWidgets.QPushButton(how3)
+        self.nextButton.setGeometry(QtCore.QRect(430, 510, 200, 40))
         self.nextButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
-        self.nextButton.setObjectName("exButton2")
-        self.widget = QtWidgets.QWidget(HowtoUse)
-        self.widget.setGeometry(QtCore.QRect(730, 20, 91, 61))
-        self.widget.setStyleSheet("background-color:\"Dodgerblue\";")
-        self.widget.setObjectName("widget")
-        self.widget_2 = QtWidgets.QWidget(HowtoUse)
-        self.widget_2.setGeometry(QtCore.QRect(30, 20, 91, 61))
-        self.widget_2.setStyleSheet("background-color:\"Dodgerblue\";")
-        self.widget_2.setObjectName("widget_2")
+        self.nextButton.setObjectName("nextButton")
 
-        self.retranslateUi(HowtoUse)
-        QtCore.QMetaObject.connectSlotsByName(HowtoUse)
+        self.retranslateUi(how3)
+        QtCore.QMetaObject.connectSlotsByName(how3)
 
+        # 버튼 이벤트 - 홈 버튼 클릭 시
+        self.homeButton.clicked.connect(self.home_clicked)
+
+        # 버튼 이벤트 - 다음 버튼 클릭 시
         self.nextButton.clicked.connect(self.next_clicked)
+
+        # 버튼 이벤트 - 이전 버튼 클릭 시
         self.preButton.clicked.connect(self.pre_clicked)
 
-    def next_clicked(self):
-        how3.close()
+
+    # home_clicked 함수 선언 - 메인 페이지로 돌아감
+    def home_clicked(self):
+        selectFi.close()
         homePT.show()
 
+    # next_clicked 함수 선언 - 다음 페이지(운동 선택 페이지)로 넘어감
+    def next_clicked(self):
+        how3.close()
+        selectEx.show()
+
+    # pre_clicked 함수 선언 - 이전 페이지로 돌아감
     def pre_clicked(self):
         how3.close()
         how2.show()
 
-    def retranslateUi(self, HowtoUse):
+    def retranslateUi(self, how3):
         _translate = QtCore.QCoreApplication.translate
-        HowtoUse.setWindowTitle(_translate("selectExercise", "HomePT와 함께 하는 올바른 홈트레이닝 라이프"))
-        self.selectTitle.setText(_translate("selectExercise", "<html><head/><body><p align=\"center\">Step3. 결과 확인</p></body></html>"))
-        self.preButton.setText(_translate("selectExercise", "prev"))
-        self.nextButton.setText(_translate("selectExercise", "start"))
+        how3.setWindowTitle(_translate("how3", "HomePT와 함께 하는 올바른 홈트레이닝 라이프"))
+        self.selectTitle.setText(_translate("how3", "<html><head/><body><p align=\"center\">Step3. 결과를 확인하세요.</p></body></html>"))
+        self.preButton.setText(_translate("how3", "prev"))
+        self.nextButton.setText(_translate("how3", "start"))
 
 # main 함수
 if __name__ == "__main__":
@@ -502,12 +571,15 @@ if __name__ == "__main__":
     selectFi = SelectFile()
 
     # how to use 페이지
+    # step 1 페이지
     how1 = QtWidgets.QDialog()
     ui3 = HowtoUse_step1()
     ui3.setupUi(how1)
+    # step 2 페이지
     how2 = QtWidgets.QDialog()
     ui4 = HowtoUse_step2()
     ui4.setupUi(how2)
+    # step 3 페이지
     how3 = QtWidgets.QDialog()
     ui5 = HowtoUse_step3()
     ui5.setupUi(how3)
