@@ -90,6 +90,16 @@ class Ui_selectExercise(object):
         self.homeButton.setIcon(icon1)  # 이미지 설정
         self.homeButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
         self.homeButton.setStyleSheet('QPushButton{border: 0px solid;}')
+        # 클릭 시 홈화면으로 이동하도록
+
+        # 이전버튼
+        icon2 = QtGui.QIcon('backButton.png')  # 홈버튼 이미지
+        self.backButton = QtWidgets.QPushButton(selectExercise)
+        self.backButton.setGeometry(QtCore.QRect(30, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
+        self.backButton.setIcon(icon2)  # 이미지 설정
+        self.backButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
+        self.backButton.setStyleSheet('QPushButton{border: 0px solid;}')
+        # 클릭 시 이전화면으로 이동하도록
 
         # 타이틀 문구 - 운동 선택 문구
         self.selectTitle = QtWidgets.QLabel(selectExercise)
@@ -163,28 +173,11 @@ class Ui_selectExercise(object):
         self.retranslateUi(selectExercise)
         QtCore.QMetaObject.connectSlotsByName(selectExercise)
 
-        # 버튼 이벤트 - 홈 버튼 클릭 시
-        self.homeButton.clicked.connect(self.home_clicked)  # ex1_clicked 함수 호출
-
         # 버튼 이벤트 - exButton1 버튼 클릭 시
-        self.exButton1.clicked.connect(self.ex_clicked)  # ex1_clicked 함수 호출
-
-        # 버튼 이벤트 - exButton2 버튼 클릭 시
-        self.exButton2.clicked.connect(self.ex_clicked)  # ex1_clicked 함수 호출
-
-        # 버튼 이벤트 - exButton3 버튼 클릭 시
-        self.exButton3.clicked.connect(self.ex_clicked)  # ex1_clicked 함수 호출
-
-        # 버튼 이벤트 - exButton4 버튼 클릭 시
-        self.exButton4.clicked.connect(self.ex_clicked)  # ex1_clicked 함수 호출
-
-        # home_clicked 함수 선언 - 메인 페이지로 돌아감
-    def home_clicked(self):
-        selectEx.close()
-        homePT.show()
+        self.exButton1.clicked.connect(self.ex1_clicked)  # ex1_clicked 함수 호출
 
         # ex1_clicked 함수 선언 - 메인 페이지에서 운동 선택 페이지로 전환
-    def ex_clicked(self):
+    def ex1_clicked(self):
         selectEx.close()
         selectFi.show()
 
@@ -223,6 +216,15 @@ class SelectFile(QWidget):
         self.homeButton.setStyleSheet('QPushButton{border: 0px solid;}')
         # 클릭 시 홈화면으로 이동하도록
 
+        # 이전버튼
+        icon2 = QtGui.QIcon('backButton.png')  # 홈버튼 이미지
+        self.backButton = QtWidgets.QPushButton(self)
+        self.backButton.setGeometry(QtCore.QRect(30, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
+        self.backButton.setIcon(icon2)  # 이미지 설정
+        self.backButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
+        self.backButton.setStyleSheet('QPushButton{border: 0px solid;}')
+        # 클릭 시 이전화면으로 이동하도록
+
         # 스타일시트
         self.setStyleSheet("font: 24pt\"경기천년제목M Medium\"; background-color:\"Aliceblue\";")
 
@@ -241,6 +243,7 @@ class SelectFile(QWidget):
 
         layout = QVBoxLayout()
         layout.addWidget(self.homeButton)
+        layout.addWidget(self.backButton)
         layout.addWidget(self.textlabel)
         layout.addWidget(self.pushButton)
         layout.addWidget(self.label)
