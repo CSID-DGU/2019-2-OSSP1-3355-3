@@ -54,10 +54,18 @@ class Ui_homePT(object):
         # 버튼 이벤트 - START 버튼 클릭 시
         self.startButton.clicked.connect(self.start_clicked) # start_clicked 함수 호출
 
+        # 버튼 이벤트 - howToUse 버튼 클릭 시
+        self.howToUse.clicked.connect(self.how_clicked)  # start_clicked 함수 호출
+
     # start_clicked 함수 선언 - 메인 페이지에서 운동 선택 페이지로 전환
     def start_clicked(self):
         homePT.close()
         selectEx.show()
+
+    # howToUse 함수 선언 - 안내 페이지로 전환
+    def how_clicked(self):
+        homePT.close()
+        how1.show()
 
     # retranslateUi 함수 선언
     def retranslateUi(self, homePT):
@@ -180,16 +188,16 @@ class Ui_selectExercise(object):
         self.backButton.clicked.connect(self.back_clicked)
 
         # 버튼 이벤트 - exButton1 버튼 클릭 시
-        self.exButton1.clicked.connect(self.ex_clicked)  # ex1_clicked 함수 호출
+        self.exButton1.clicked.connect(self.ex_clicked)  # ex_clicked 함수 호출
 
         # 버튼 이벤트 - exButton2 버튼 클릭 시
-        self.exButton2.clicked.connect(self.ex_clicked)  # ex1_clicked 함수 호출
+        self.exButton2.clicked.connect(self.ex_clicked)  # ex_clicked 함수 호출
 
         # 버튼 이벤트 - exButton3 버튼 클릭 시
-        self.exButton3.clicked.connect(self.ex_clicked)  # ex1_clicked 함수 호출
+        self.exButton3.clicked.connect(self.ex_clicked)  # ex_clicked 함수 호출
 
         # 버튼 이벤트 - exButton4 버튼 클릭 시
-        self.exButton4.clicked.connect(self.ex_clicked)  # ex1_clicked 함수 호출
+        self.exButton4.clicked.connect(self.ex_clicked)  # ex_clicked 함수 호출
 
         # home_clicked 함수 선언 - 메인 페이지로 돌아감
     def home_clicked(self):
@@ -298,6 +306,165 @@ class SelectFile(QWidget):
         fname = QFileDialog.getOpenFileName(self)
         self.label.setText(fname[0])
 
+# How to Use step 1 페이지
+class HowtoUse_step1(object):
+    def setupUi(self, HowtoUse):
+        HowtoUse.setObjectName("selectExercise")
+        HowtoUse.resize(850, 600)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icon_heart/heart.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        HowtoUse.setWindowIcon(icon)
+        HowtoUse.setStyleSheet("background-color:\"Aliceblue\";")
+        self.selectTitle = QtWidgets.QLabel(HowtoUse)
+        self.selectTitle.setGeometry(QtCore.QRect(110, 450, 650, 61))
+        self.selectTitle.setStyleSheet("font: 20pt\"경기천년제목M Medium\"; color:\"black\";")
+        self.selectTitle.setObjectName("selectTitle")
+        self.Photo = QtWidgets.QWidget(HowtoUse)
+        self.Photo.setGeometry(QtCore.QRect(210, 120, 431, 301))
+        self.Photo.setAutoFillBackground(False)
+        self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(:/exercise1/ex1.png);")
+        self.Photo.setObjectName("Photo")
+        self.nextButton = QtWidgets.QPushButton(HowtoUse)
+        self.nextButton.setGeometry(QtCore.QRect(450, 510, 131, 40))
+        self.nextButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.nextButton.setObjectName("exButton2")
+        self.widget = QtWidgets.QWidget(HowtoUse)
+        self.widget.setGeometry(QtCore.QRect(730, 20, 91, 61))
+        self.widget.setStyleSheet("background-color:\"Dodgerblue\";")
+        self.widget.setObjectName("widget")
+        self.widget_2 = QtWidgets.QWidget(HowtoUse)
+        self.widget_2.setGeometry(QtCore.QRect(30, 20, 91, 61))
+        self.widget_2.setStyleSheet("background-color:\"Dodgerblue\";")
+        self.widget_2.setObjectName("widget_2")
+
+        self.retranslateUi(HowtoUse)
+        QtCore.QMetaObject.connectSlotsByName(HowtoUse)
+
+        self.nextButton.clicked.connect(self.next_clicked)
+
+    def next_clicked(self):
+        how1.close()
+        how2.show()
+
+    def retranslateUi(self, HowtoUse):
+        _translate = QtCore.QCoreApplication.translate
+        HowtoUse.setWindowTitle(_translate("selectExercise", "HomePT와 함께 하는 올바른 홈트레이닝 라이프"))
+        self.selectTitle.setText(_translate("selectExercise", "<html><head/><body><p align=\"center\">Step1. 원하는 운동을 선택해주세요</p><p align=\"center\"><br/></p></body></html>"))
+        self.nextButton.setText(_translate("selectExercise", "next"))
+
+# How to Use step 2 페이지
+class HowtoUse_step2(object):
+    def setupUi(self, HowtoUse):
+        HowtoUse.setObjectName("selectExercise")
+        HowtoUse.resize(850, 600)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icon_heart/heart.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        HowtoUse.setWindowIcon(icon)
+        HowtoUse.setStyleSheet("background-color:\"Aliceblue\";")
+        self.selectTitle = QtWidgets.QLabel(HowtoUse)
+        self.selectTitle.setGeometry(QtCore.QRect(100, 440, 650, 61))
+        self.selectTitle.setStyleSheet("font: 20pt\"경기천년제목M Medium\"; color:\"black\";")
+        self.selectTitle.setObjectName("selectTitle")
+        self.Photo = QtWidgets.QWidget(HowtoUse)
+        self.Photo.setGeometry(QtCore.QRect(210, 120, 431, 301))
+        self.Photo.setAutoFillBackground(False)
+        self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(:/exercise1/ex1.png);")
+        self.Photo.setObjectName("Photo")
+        self.preButton = QtWidgets.QPushButton(HowtoUse)
+        self.preButton.setGeometry(QtCore.QRect(260, 510, 141, 40))
+        self.preButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.preButton.setObjectName("exButton1")
+        self.nextButton = QtWidgets.QPushButton(HowtoUse)
+        self.nextButton.setGeometry(QtCore.QRect(450, 510, 131, 40))
+        self.nextButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.nextButton.setObjectName("exButton2")
+        self.widget = QtWidgets.QWidget(HowtoUse)
+        self.widget.setGeometry(QtCore.QRect(730, 20, 91, 61))
+        self.widget.setStyleSheet("background-color:\"Dodgerblue\";")
+        self.widget.setObjectName("widget")
+        self.widget_2 = QtWidgets.QWidget(HowtoUse)
+        self.widget_2.setGeometry(QtCore.QRect(30, 20, 91, 61))
+        self.widget_2.setStyleSheet("background-color:\"Dodgerblue\";")
+        self.widget_2.setObjectName("widget_2")
+
+        self.retranslateUi(HowtoUse)
+        QtCore.QMetaObject.connectSlotsByName(HowtoUse)
+
+        self.nextButton.clicked.connect(self.next_clicked)
+        self.preButton.clicked.connect(self.pre_clicked)
+
+    def next_clicked(self):
+        how2.close()
+        how3.show()
+
+    def pre_clicked(self):
+        how2.close()
+        how1.show()
+
+    def retranslateUi(self, HowtoUse):
+        _translate = QtCore.QCoreApplication.translate
+        HowtoUse.setWindowTitle(_translate("selectExercise", "HomePT와 함께 하는 올바른 홈트레이닝 라이프"))
+        self.selectTitle.setText(_translate("selectExercise",
+                                                "<html><head/><body><p align=\"center\">Step2. 동영상 파일을 불러와 주세요</p></body></html>"))
+        self.preButton.setText(_translate("selectExercise", "prev"))
+        self.nextButton.setText(_translate("selectExercise", "next"))
+
+# How to Use step 3 페이지
+class HowtoUse_step3(object):
+    def setupUi(self, HowtoUse):
+        HowtoUse.setObjectName("selectExercise")
+        HowtoUse.resize(850, 600)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icon_heart/heart.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        HowtoUse.setWindowIcon(icon)
+        HowtoUse.setStyleSheet("background-color:\"Aliceblue\";")
+        self.selectTitle = QtWidgets.QLabel(HowtoUse)
+        self.selectTitle.setGeometry(QtCore.QRect(100, 440, 650, 61))
+        self.selectTitle.setStyleSheet("font: 20pt\"경기천년제목M Medium\"; color:\"black\";")
+        self.selectTitle.setObjectName("selectTitle")
+        self.Photo = QtWidgets.QWidget(HowtoUse)
+        self.Photo.setGeometry(QtCore.QRect(210, 120, 431, 301))
+        self.Photo.setAutoFillBackground(False)
+        self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(:/exercise1/ex1.png);")
+        self.Photo.setObjectName("Photo")
+        self.preButton = QtWidgets.QPushButton(HowtoUse)
+        self.preButton.setGeometry(QtCore.QRect(260, 510, 141, 40))
+        self.preButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.preButton.setObjectName("exButton1")
+        self.nextButton = QtWidgets.QPushButton(HowtoUse)
+        self.nextButton.setGeometry(QtCore.QRect(450, 510, 131, 40))
+        self.nextButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.nextButton.setObjectName("exButton2")
+        self.widget = QtWidgets.QWidget(HowtoUse)
+        self.widget.setGeometry(QtCore.QRect(730, 20, 91, 61))
+        self.widget.setStyleSheet("background-color:\"Dodgerblue\";")
+        self.widget.setObjectName("widget")
+        self.widget_2 = QtWidgets.QWidget(HowtoUse)
+        self.widget_2.setGeometry(QtCore.QRect(30, 20, 91, 61))
+        self.widget_2.setStyleSheet("background-color:\"Dodgerblue\";")
+        self.widget_2.setObjectName("widget_2")
+
+        self.retranslateUi(HowtoUse)
+        QtCore.QMetaObject.connectSlotsByName(HowtoUse)
+
+        self.nextButton.clicked.connect(self.next_clicked)
+        self.preButton.clicked.connect(self.pre_clicked)
+
+    def next_clicked(self):
+        how3.close()
+        homePT.show()
+
+    def pre_clicked(self):
+        how3.close()
+        how2.show()
+
+    def retranslateUi(self, HowtoUse):
+        _translate = QtCore.QCoreApplication.translate
+        HowtoUse.setWindowTitle(_translate("selectExercise", "HomePT와 함께 하는 올바른 홈트레이닝 라이프"))
+        self.selectTitle.setText(_translate("selectExercise", "<html><head/><body><p align=\"center\">Step3. 결과 확인</p></body></html>"))
+        self.preButton.setText(_translate("selectExercise", "prev"))
+        self.nextButton.setText(_translate("selectExercise", "start"))
+
 # main 함수
 if __name__ == "__main__":
     import sys
@@ -316,5 +483,16 @@ if __name__ == "__main__":
 
     # 파일 선택 페이지
     selectFi = SelectFile()
+
+    # how to use 페이지
+    how1 = QtWidgets.QDialog()
+    ui3 = HowtoUse_step1()
+    ui3.setupUi(how1)
+    how2 = QtWidgets.QDialog()
+    ui4 = HowtoUse_step2()
+    ui4.setupUi(how2)
+    how3 = QtWidgets.QDialog()
+    ui5 = HowtoUse_step3()
+    ui5.setupUi(how3)
 
     sys.exit(app.exec_())
