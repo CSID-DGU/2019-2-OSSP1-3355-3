@@ -84,9 +84,9 @@ class Ui_selectExercise(object):
         selectExercise.setStyleSheet("background-color:\"Aliceblue\";")
 
         # 홈버튼
-        icon1 = QtGui.QIcon('homeButton.png')  # 홈버튼 이미지
+        icon1 = QtGui.QIcon('homebutton.png')  # 홈버튼 이미지
         self.homeButton = QtWidgets.QPushButton(selectExercise)
-        self.homeButton.setGeometry(QtCore.QRect(780, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
+        self.homeButton.setGeometry(QtCore.QRect(790, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
         self.homeButton.setIcon(icon1)  # 이미지 설정
         self.homeButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
         self.homeButton.setStyleSheet('QPushButton{border: 0px solid;}')
@@ -95,7 +95,7 @@ class Ui_selectExercise(object):
         # 이전버튼
         icon2 = QtGui.QIcon('backButton.png')  # 홈버튼 이미지
         self.backButton = QtWidgets.QPushButton(selectExercise)
-        self.backButton.setGeometry(QtCore.QRect(30, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
+        self.backButton.setGeometry(QtCore.QRect(20, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
         self.backButton.setIcon(icon2)  # 이미지 설정
         self.backButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
         self.backButton.setStyleSheet('QPushButton{border: 0px solid;}')
@@ -210,7 +210,7 @@ class SelectFile(QWidget):
         # 홈버튼
         icon1 = QtGui.QIcon('homeButton.png')  # 홈버튼 이미지
         self.homeButton = QtWidgets.QPushButton(self)
-        self.homeButton.setGeometry(QtCore.QRect(780, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
+        self.homeButton.setGeometry(QtCore.QRect(790, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
         self.homeButton.setIcon(icon1)  # 이미지 설정
         self.homeButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
         self.homeButton.setStyleSheet('QPushButton{border: 0px solid;}')
@@ -219,7 +219,7 @@ class SelectFile(QWidget):
         # 이전버튼
         icon2 = QtGui.QIcon('backButton.png')  # 홈버튼 이미지
         self.backButton = QtWidgets.QPushButton(self)
-        self.backButton.setGeometry(QtCore.QRect(30, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
+        self.backButton.setGeometry(QtCore.QRect(20, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
         self.backButton.setIcon(icon2)  # 이미지 설정
         self.backButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
         self.backButton.setStyleSheet('QPushButton{border: 0px solid;}')
