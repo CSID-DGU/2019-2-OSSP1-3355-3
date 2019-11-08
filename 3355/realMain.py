@@ -260,25 +260,23 @@ class SelectFile(QWidget):
         self.setStyleSheet("font: 24pt\"경기천년제목M Medium\"; background-color:\"Aliceblue\";")
 
         # 파일 선택 문구
-        self.textlabel = QLabel()
+        self.textlabel = QtWidgets.QLabel(self)
         self.textlabel.setText("파일을 선택해주세요")
-        self.textlabel.setStyleSheet("color:\"black\";font: 16pt\"경기천년제목M Medium\";")
+        self.textlabel.setGeometry(QtCore.QRect(220, 200, 420, 50))
+        self.textlabel.setStyleSheet("color:\"black\";font: 30pt\"경기천년제목M Medium\";")
         self.textlabel.setAlignment(QtCore.Qt.AlignCenter)
 
         # 파일 선택 버튼
-        self.pushButton = QPushButton("파일 선택")
+        self.pushButton = QtWidgets.QPushButton(self)
+        self.pushButton.setGeometry(QtCore.QRect(340, 330, 160, 40))  # 버튼 위치 및 사이즈 설정
+        self.pushButton.setText("파일 선택")
         self.pushButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
 
-        self.label = QLabel()
-
-        layout = QVBoxLayout()
-        layout.addWidget(self.homeButton)
-        layout.addWidget(self.backButton)
-        layout.addWidget(self.textlabel)
-        layout.addWidget(self.pushButton)
-        layout.addWidget(self.label)
-
-        self.setLayout(layout)
+        # 선택된 파일 위치
+        self.label = QtWidgets.QLabel(self)
+        self.label.setGeometry(QtCore.QRect(150, 500, 700, 50))
+        self.label.setStyleSheet("color:\"black\";font: 12pt\"경기천년제목M Medium\";")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
 
         # 버튼 이벤트 - 홈 버튼 클릭 시
         self.homeButton.clicked.connect(self.home_clicked)
