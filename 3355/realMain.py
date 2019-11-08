@@ -173,11 +173,36 @@ class Ui_selectExercise(object):
         self.retranslateUi(selectExercise)
         QtCore.QMetaObject.connectSlotsByName(selectExercise)
 
-        # 버튼 이벤트 - exButton1 버튼 클릭 시
-        self.exButton1.clicked.connect(self.ex1_clicked)  # ex1_clicked 함수 호출
+        # 버튼 이벤트 - 홈 버튼 클릭 시
+        self.homeButton.clicked.connect(self.home_clicked)
 
-        # ex1_clicked 함수 선언 - 메인 페이지에서 운동 선택 페이지로 전환
-    def ex1_clicked(self):
+        # 버튼 이벤트 - 백 버튼 클릭 시
+        self.backButton.clicked.connect(self.back_clicked)
+
+        # 버튼 이벤트 - exButton1 버튼 클릭 시
+        self.exButton1.clicked.connect(self.ex_clicked)  # ex1_clicked 함수 호출
+
+        # 버튼 이벤트 - exButton2 버튼 클릭 시
+        self.exButton2.clicked.connect(self.ex_clicked)  # ex1_clicked 함수 호출
+
+        # 버튼 이벤트 - exButton3 버튼 클릭 시
+        self.exButton3.clicked.connect(self.ex_clicked)  # ex1_clicked 함수 호출
+
+        # 버튼 이벤트 - exButton4 버튼 클릭 시
+        self.exButton4.clicked.connect(self.ex_clicked)  # ex1_clicked 함수 호출
+
+        # home_clicked 함수 선언 - 메인 페이지로 돌아감
+    def home_clicked(self):
+        selectEx.close()
+        homePT.show()
+
+        # back_clicked 함수 선언 - 이전 페이지로 돌아감
+    def back_clicked(self):
+        selectEx.close()
+        homePT.show()
+
+        # ex_clicked 함수 선언 - 메인 페이지에서 운동 선택 페이지로 전환
+    def ex_clicked(self):
         selectEx.close()
         selectFi.show()
 
@@ -236,7 +261,6 @@ class SelectFile(QWidget):
 
         # 파일 선택 버튼
         self.pushButton = QPushButton("파일 선택")
-        self.pushButton.clicked.connect(self.pushButtonClicked) # 버튼 클릭 시 함수 호출
         self.pushButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
 
         self.label = QLabel()
@@ -249,6 +273,25 @@ class SelectFile(QWidget):
         layout.addWidget(self.label)
 
         self.setLayout(layout)
+
+        # 버튼 이벤트 - 홈 버튼 클릭 시
+        self.homeButton.clicked.connect(self.home_clicked)
+
+        # 버튼 이벤트 - 백 버튼 클릭 시
+        self.backButton.clicked.connect(self.back_clicked)
+
+        # 버튼 이벤트 - 파일 선택 클릭 시
+        self.pushButton.clicked.connect(self.pushButtonClicked)
+
+        # home_clicked 함수 선언 - 메인 페이지로 돌아감
+    def home_clicked(self):
+        selectFi.close()
+        homePT.show()
+
+        # back_clicked 함수 선언 - 이전 페이지로 돌아감
+    def back_clicked(self):
+        selectFi.close()
+        selectEx.show()
 
     # 파일 선택 버튼 클릭 시 수행되는 함수
     def pushButtonClicked(self):
