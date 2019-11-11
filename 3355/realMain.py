@@ -92,7 +92,7 @@ class Ui_selectExercise(object):
         selectExercise.setStyleSheet("background-color:\"Aliceblue\";")
 
         # 홈버튼
-        icon1 = QtGui.QIcon('homebutton.png')  # 홈버튼 이미지
+        icon1 = QtGui.QIcon('home.png')  # 홈버튼 이미지
         self.homeButton = QtWidgets.QPushButton(selectExercise)
         self.homeButton.setGeometry(QtCore.QRect(790, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
         self.homeButton.setIcon(icon1)  # 이미지 설정
@@ -272,7 +272,7 @@ class SelectFile(QWidget):
         self.setWindowIcon(icon)
 
         # 홈버튼
-        icon1 = QtGui.QIcon('homeButton.png')  # 홈버튼 이미지
+        icon1 = QtGui.QIcon('home.png')  # 홈버튼 이미지
         self.homeButton = QtWidgets.QPushButton(self)
         self.homeButton.setGeometry(QtCore.QRect(790, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
         self.homeButton.setIcon(icon1)  # 이미지 설정
@@ -357,10 +357,10 @@ class HowtoUse_step1(object):
         # 창 설정
         how1.setObjectName("how1")
         how1.resize(850, 600)
-        how1.setStyleSheet("background-color:\"Aliceblue\";")
+        how1.setStyleSheet("background-color:\"Lavender\";")
 
         # 홈버튼
-        icon1 = QtGui.QIcon('homebutton.png')  # 홈버튼 이미지
+        icon1 = QtGui.QIcon('home.png')  # 홈버튼 이미지
         self.homeButton = QtWidgets.QPushButton(how1)
         self.homeButton.setGeometry(QtCore.QRect(790, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
         self.homeButton.setIcon(icon1)  # 이미지 설정
@@ -372,7 +372,7 @@ class HowtoUse_step1(object):
         self.Photo = QtWidgets.QWidget(how1)
         self.Photo.setGeometry(QtCore.QRect(150, 30, 550, 408))
         self.Photo.setAutoFillBackground(False)
-        self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(step1image.jpg);")
+        self.Photo.setStyleSheet("background-color:\"white\";image: url(step1image.jpg);")
         self.Photo.setObjectName("Photo")
 
         # step 1 문구
@@ -384,13 +384,13 @@ class HowtoUse_step1(object):
         # 이전 버튼
         self.preButton = QtWidgets.QPushButton(how1)
         self.preButton.setGeometry(QtCore.QRect(220, 510, 200, 40))
-        self.preButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.preButton.setStyleSheet("background-color:\"Orchid\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
         self.preButton.setObjectName("preButton")
 
         # 다음 버튼
         self.nextButton = QtWidgets.QPushButton(how1)
         self.nextButton.setGeometry(QtCore.QRect(430, 510, 200, 40))
-        self.nextButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.nextButton.setStyleSheet("background-color:\"Orchid\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
         self.nextButton.setObjectName("nextButton")
 
         self.retranslateUi(how1)
@@ -440,10 +440,10 @@ class HowtoUse_step2(object):
         # 창 설정
         how2.setObjectName("how2")
         how2.resize(850, 600)
-        how2.setStyleSheet("background-color:\"Aliceblue\";")
+        how2.setStyleSheet("background-color:\"Lavender\";")
 
         # 홈버튼
-        icon1 = QtGui.QIcon('homebutton.png')  # 홈버튼 이미지
+        icon1 = QtGui.QIcon('home.png')  # 홈버튼 이미지
         self.homeButton = QtWidgets.QPushButton(how2)
         self.homeButton.setGeometry(QtCore.QRect(790, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
         self.homeButton.setIcon(icon1)  # 이미지 설정
@@ -455,7 +455,7 @@ class HowtoUse_step2(object):
         self.Photo = QtWidgets.QWidget(how2)
         self.Photo.setGeometry(QtCore.QRect(150, 30, 550, 408))
         self.Photo.setAutoFillBackground(False)
-        self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(step2image.jpg);")
+        self.Photo.setStyleSheet("background-color:\"white\";image: url(step2image.jpg);")
         self.Photo.setObjectName("Photo")
 
         # step 2 문구
@@ -467,13 +467,13 @@ class HowtoUse_step2(object):
         # 이전 버튼
         self.preButton = QtWidgets.QPushButton(how2)
         self.preButton.setGeometry(QtCore.QRect(220, 510, 200, 40))
-        self.preButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.preButton.setStyleSheet("background-color:\"Orchid\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
         self.preButton.setObjectName("preButton")
 
         # 다음 버튼
         self.nextButton = QtWidgets.QPushButton(how2)
         self.nextButton.setGeometry(QtCore.QRect(430, 510, 200, 40))
-        self.nextButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.nextButton.setStyleSheet("background-color:\"Orchid\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
         self.nextButton.setObjectName("nextButton")
 
         self.retranslateUi(how2)
@@ -523,10 +523,10 @@ class HowtoUse_step3(object):
         # 창 설정
         how3.setObjectName("how3")
         how3.resize(850, 600)
-        how3.setStyleSheet("background-color:\"Aliceblue\";")
+        how3.setStyleSheet("background-color:\"Lavender\";")
 
         # 홈버튼
-        icon1 = QtGui.QIcon('homebutton.png')  # 홈버튼 이미지
+        icon1 = QtGui.QIcon('home.png')  # 홈버튼 이미지
         self.homeButton = QtWidgets.QPushButton(how3)
         self.homeButton.setGeometry(QtCore.QRect(790, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
         self.homeButton.setIcon(icon1)  # 이미지 설정
@@ -538,7 +538,7 @@ class HowtoUse_step3(object):
         self.Photo = QtWidgets.QWidget(how3)
         self.Photo.setGeometry(QtCore.QRect(150, 30, 550, 408))
         self.Photo.setAutoFillBackground(False)
-        self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(:/exercise1/ex1.png);")
+        self.Photo.setStyleSheet("background-color:\"white\";image: url(:/exercise1/ex1.png);")
         self.Photo.setObjectName("Photo")
 
         # step 3 문구
@@ -550,13 +550,13 @@ class HowtoUse_step3(object):
         # 이전 버튼
         self.preButton = QtWidgets.QPushButton(how3)
         self.preButton.setGeometry(QtCore.QRect(220, 510, 200, 40))
-        self.preButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.preButton.setStyleSheet("background-color:\"Orchid\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
         self.preButton.setObjectName("preButton")
 
         # 다음 버튼
         self.nextButton = QtWidgets.QPushButton(how3)
         self.nextButton.setGeometry(QtCore.QRect(430, 510, 200, 40))
-        self.nextButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
+        self.nextButton.setStyleSheet("background-color:\"Orchid\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
         self.nextButton.setObjectName("nextButton")
 
         self.retranslateUi(how3)
