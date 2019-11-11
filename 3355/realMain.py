@@ -2,6 +2,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+select_exercise_global = 0
+
 # 메인 페이지
 class Ui_homePT(object):
     # 메인 페이지 UI setup
@@ -74,6 +76,7 @@ class Ui_homePT(object):
 
 # 운동 선택 페이지
 class Ui_selectExercise(object):
+
     # 운동 선택 페이지 UI setup
     def setupUi(self, selectExercise):
         selectExercise.setObjectName("selectExercise")
@@ -185,16 +188,16 @@ class Ui_selectExercise(object):
         self.backButton.clicked.connect(self.back_clicked)
 
         # 버튼 이벤트 - exButton1 버튼 클릭 시
-        self.exButton1.clicked.connect(self.ex_clicked)  # ex_clicked 함수 호출
+        self.exButton1.clicked.connect(self.ex1_clicked)  # ex_clicked 함수 호출
 
         # 버튼 이벤트 - exButton2 버튼 클릭 시
-        self.exButton2.clicked.connect(self.ex_clicked)  # ex_clicked 함수 호출
+        self.exButton2.clicked.connect(self.ex2_clicked)  # ex_clicked 함수 호출
 
         # 버튼 이벤트 - exButton3 버튼 클릭 시
-        self.exButton3.clicked.connect(self.ex_clicked)  # ex_clicked 함수 호출
+        self.exButton3.clicked.connect(self.ex3_clicked)  # ex_clicked 함수 호출
 
         # 버튼 이벤트 - exButton4 버튼 클릭 시
-        self.exButton4.clicked.connect(self.ex_clicked)  # ex_clicked 함수 호출
+        self.exButton4.clicked.connect(self.ex4_clicked)  # ex_clicked 함수 호출
 
     # home_clicked 함수 선언 - 메인 페이지로 돌아감
     def home_clicked(self):
@@ -206,8 +209,39 @@ class Ui_selectExercise(object):
         selectEx.close()
         homePT.show()
 
-     # ex_clicked 함수 선언 - 운동 선택 페이지로 전환
-    def ex_clicked(self):
+    # ex1_clicked 함수 선언 - 풀업 선택 페이지로 전환
+    def ex1_clicked(self):
+        selectFi.textlabel.setText("풀업 운동 영상을 선택해주세요") # 문구 출력
+        selectFi.pixex = QPixmap("pullup.jpg") # 이미지 출력
+        selectFi.pixexercise = selectFi.pixex.scaled(500, 300, QtCore.Qt.KeepAspectRatio)  # 이미지 사이즈 설정
+        selectFi.ex.setPixmap(selectFi.pixexercise)
+        selectEx.close()
+        selectFi.show()
+
+    # ex2_clicked 함수 선언 - 스쿼트 파일 선택 페이지로 전환
+    def ex2_clicked(self):
+        selectFi.textlabel.setText("스쿼트 운동 영상을 선택해주세요") # 문구 출력
+        selectFi.pixex = QPixmap("squat.jpg")  # 이미지 출력
+        selectFi.pixexercise = selectFi.pixex.scaled(500, 300, QtCore.Qt.KeepAspectRatio)  # 이미지 사이즈 설정
+        selectFi.ex.setPixmap(selectFi.pixexercise)
+        selectEx.close()
+        selectFi.show()
+
+    # ex3_clicked 함수 선언 - 플랭크 파일 선택 페이지로 전환
+    def ex3_clicked(self):
+        selectFi.textlabel.setText("플랭크 운동 영상을 선택해주세요") # 문구 출력
+        selectFi.pixex = QPixmap("plank.png")  # 이미지 출력
+        selectFi.pixexercise = selectFi.pixex.scaled(500, 300, QtCore.Qt.KeepAspectRatio)  # 이미지 사이즈 설정
+        selectFi.ex.setPixmap(selectFi.pixexercise)
+        selectEx.close()
+        selectFi.show()
+
+    # ex4_clicked 함수 선언 - 런지 파일 선택 페이지로 전환
+    def ex4_clicked(self):
+        selectFi.textlabel.setText("런지 운동 영상을 선택해주세요") # 문구 출력
+        selectFi.pixex = QPixmap("runge.jpg")  # 이미지 출력
+        selectFi.pixexercise = selectFi.pixex.scaled(500, 300, QtCore.Qt.KeepAspectRatio)  # 이미지 사이즈 설정
+        selectFi.ex.setPixmap(selectFi.pixexercise)
         selectEx.close()
         selectFi.show()
 
@@ -221,7 +255,7 @@ class Ui_selectExercise(object):
         self.exButton3.setText(_translate("selectExercise", "플랭크"))
         self.exButton4.setText(_translate("selectExercise", "런지"))
 
-# 파일 선택 페이지
+# 운동 파일 선택 페이지
 class SelectFile(QWidget):
     def __init__(self):
         super().__init__()
@@ -260,14 +294,21 @@ class SelectFile(QWidget):
 
         # 파일 선택 문구
         self.textlabel = QtWidgets.QLabel(self)
-        self.textlabel.setText("해당 운동 영상을 선택해주세요.")
-        self.textlabel.setGeometry(QtCore.QRect(225, 220, 440, 50))
+        self.textlabel.setText("운동 영상을 선택해주세요.")
+        self.textlabel.setGeometry(QtCore.QRect(140, 60, 600, 50))
         self.textlabel.setStyleSheet("color:\"black\";font: 26pt\"경기천년제목M Medium\";")
         self.textlabel.setAlignment(QtCore.Qt.AlignCenter)
 
+        # 운동 이미지
+        self.ex = QtWidgets.QLabel(self)
+        self.ex.setGeometry(QtCore.QRect(190, 130, 500, 300))  # 위치 및 사이즈 설정
+
+        self.ex.setText("")
+        self.ex.setObjectName("ex")
+
         # 파일 선택 버튼
         self.pushButton = QtWidgets.QPushButton(self)
-        self.pushButton.setGeometry(QtCore.QRect(225, 300, 440, 40))  # 버튼 위치 및 사이즈 설정
+        self.pushButton.setGeometry(QtCore.QRect(215, 450, 440, 40))  # 버튼 위치 및 사이즈 설정
         self.pushButton.setText("동영상 파일 불러오기")
         self.pushButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
 
@@ -288,11 +329,13 @@ class SelectFile(QWidget):
 
     # home_clicked 함수 선언 - 메인 페이지로 돌아감
     def home_clicked(self):
+        self.label.setText("") # 파일 명 초기화
         selectFi.close()
         homePT.show()
 
     # back_clicked 함수 선언 - 이전 페이지로 돌아감
     def back_clicked(self):
+        self.label.setText("") # 파일 명 초기화
         selectFi.close()
         selectEx.show()
 
@@ -447,7 +490,7 @@ class HowtoUse_step2(object):
 
     # home_clicked 함수 선언 - 메인 페이지로 돌아감
     def home_clicked(self):
-        selectFi.close()
+        how1.close()
         homePT.show()
 
     # next_clicked 함수 선언 - 다음 페이지로 넘어감
