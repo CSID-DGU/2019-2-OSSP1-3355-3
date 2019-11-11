@@ -370,9 +370,9 @@ class HowtoUse_step1(object):
 
         # step 1 이미지
         self.Photo = QtWidgets.QWidget(how1)
-        self.Photo.setGeometry(QtCore.QRect(150, 80, 550, 350))
+        self.Photo.setGeometry(QtCore.QRect(150, 30, 550, 408))
         self.Photo.setAutoFillBackground(False)
-        self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(:/exercise1/ex1.png);")
+        self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(step1image.jpg);")
         self.Photo.setObjectName("Photo")
 
         # step 1 문구
@@ -453,9 +453,9 @@ class HowtoUse_step2(object):
 
         # step 2 이미지
         self.Photo = QtWidgets.QWidget(how2)
-        self.Photo.setGeometry(QtCore.QRect(150, 80, 550, 350))
+        self.Photo.setGeometry(QtCore.QRect(150, 30, 550, 408))
         self.Photo.setAutoFillBackground(False)
-        self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(:/exercise1/ex1.png);")
+        self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(step2image.jpg);")
         self.Photo.setObjectName("Photo")
 
         # step 2 문구
@@ -536,7 +536,7 @@ class HowtoUse_step3(object):
 
         # step 3 이미지
         self.Photo = QtWidgets.QWidget(how3)
-        self.Photo.setGeometry(QtCore.QRect(150, 80, 550, 350))
+        self.Photo.setGeometry(QtCore.QRect(150, 30, 550, 408))
         self.Photo.setAutoFillBackground(False)
         self.Photo.setStyleSheet("background-color:\"Dodgerblue\";image: url(:/exercise1/ex1.png);")
         self.Photo.setObjectName("Photo")
