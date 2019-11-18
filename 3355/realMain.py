@@ -63,7 +63,7 @@ class Ui_homePT(object):
     # howToUse 함수 선언 - 안내 페이지로 전환
     def how_clicked(self):
         homePT.close()
-        how1.show()
+        how.show()
 
     # retranslateUi 함수 선언
     def retranslateUi(self, homePT):
@@ -489,7 +489,7 @@ class HowtoUse_step1(object):
 
     # home_clicked 함수 선언 - 메인 페이지로 돌아감
     def home_clicked(self):
-        selectFi.close()
+        how1.close()
         homePT.show()
 
     # next_clicked 함수 선언 - 다음 페이지로 넘어감
@@ -500,7 +500,7 @@ class HowtoUse_step1(object):
     # pre_clicked 함수 선언 - 이전 페이지로 돌아감
     def pre_clicked(self):
         how1.close()
-        homePT.show()
+        how.show()
 
     def retranslateUi(self, how1):
         _translate = QtCore.QCoreApplication.translate
