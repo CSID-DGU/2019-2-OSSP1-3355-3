@@ -10,11 +10,11 @@ keypoint detection을 인식하여 딥러닝을 기반으로 운동 자세를 �
 ## 프로그램 메인 로고
 ![logo](https://user-images.githubusercontent.com/55729131/67072681-6b6f9380-f1c0-11e9-8609-adc2d611cdc5.png)
 
+## 사용법
+
+
 ## 팀원  
-오유민  
-배진우  
-신승윤  
-유성근  
+오유민, 배진우, 유성근, 신승윤  
 
 ## TODO
 - [x] keypoint detection - proto
@@ -24,7 +24,7 @@ keypoint detection을 인식하여 딥러닝을 기반으로 운동 자세를 �
   - [x] put image in GUI
   - [x] button event
 - [ ] keypoint detection - more accurate ver
-- [ ] PyQt GUI
+- [x] PyQt GUI
 - [ ] person detection
 - [ ] pose estimation (LSTM)
 
