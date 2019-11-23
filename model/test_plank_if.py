@@ -64,16 +64,16 @@ c = np.array([(0, 1, 1, 0.5),
               (0, 1, 0.15, 0.5),
               (0, 0, 1, 0.5),
               (0, 0, 1, 0.5),
-              (0, 0.3, 0.5, 0.5)])  # RGBA color
+              (0, 0.3, 0.5, 0.5)])
 lines = [[(ys[0], xs[0]), (ys[1], xs[1])],
          [(ys[1], xs[1]), (ys[2], xs[2])],
-         [(ys[5], xs[5]), (ys[4], xs[4])],  # left leg to left knee
-         [(ys[4], xs[4]), (ys[3], xs[3])],  # right lef to right knee
-         [(ys[3], xs[3]), (ys[6], xs[6])],  # plevis to right leg
-         [(ys[6], xs[6]), (ys[2], xs[2])],  # plevis to left leg
-         [(ys[6], xs[6]), (ys[7], xs[7])],  # chest to hip
-         [(ys[7], xs[7]), (ys[8], xs[8])],  # neck to chest
-         [(ys[8], xs[8]), (ys[9], xs[9])],  # head to neck
+         [(ys[5], xs[5]), (ys[4], xs[4])],
+         [(ys[4], xs[4]), (ys[3], xs[3])],
+         [(ys[3], xs[3]), (ys[6], xs[6])],
+         [(ys[6], xs[6]), (ys[2], xs[2])],
+         [(ys[6], xs[6]), (ys[7], xs[7])],
+         [(ys[7], xs[7]), (ys[8], xs[8])],
+         [(ys[8], xs[8]), (ys[9], xs[9])],
          [(ys[10], xs[10]), (ys[11], xs[11])],
          [(ys[11], xs[11]), (ys[12], xs[12])],
          [(ys[12], xs[12]), (ys[ 7], xs[ 7])],
@@ -81,27 +81,19 @@ lines = [[(ys[0], xs[0]), (ys[1], xs[1])],
          [(ys[14], xs[14]), (ys[13], xs[13])],
          [(ys[14], xs[14]), (ys[15], xs[15])]]
 
-lc = mc.LineCollection(lines, colors=c,linewidths=2)
-ax.add_collection(lc)
-plt.scatter(ys, xs)
 
 
-# 플랭크를 위한 각도 계산
-"""
-head_neck           = np.array([ys[9]-ys[8],xs[9]-xs[8]])
-neck_chest          = np.array([ys[7]-ys[8],xs[7]-xs[8]])
-chest_spine         = np.array([ys[6]-ys[7],xs[6]-xs[7]])
-hip                 = np.array([ys[6]-ys[7],xs[6]-xs[7]])
-leg                 = np.array([ys[4]-ys[3],xs[4]-xs[3]])
+left_antebrachial   = np.array([ys[15]-ys[14],xs[15]-xs[14]])
+left_forearm        = np.array([ys[13]-ys[14],xs[13]-xs[14]])
+left_back           = np.array([ys[7]-ys[13], xs[7]-xs[13]])
+left_arm_angle      = np.inner(left_antebrachial, left_forearm)/(np.linalg.norm(left_antebrachial)*np.linalg.norm(left_forearm))
+left_back_angle     = np.inner(left_forearm, left_back)/(np.linalg.norm(left_forearm)*np.linalg.norm(left_back))
 
-neck_angle          = np.inner(head_neck, neck_chest)/(np.linalg.norm(head_neck)*np.linalg.norm(neck_chest))
-chest_angle         = np.inner(neck_chest, chest_spine)/(np.linalg.norm(neck_chest)*np.linalg.norm(chest_spine))
-hip_angle           = np.inner(hip, leg)/(np.linalg.norm(hip)*np.linalg.norm(leg))
-
-print("목 각    : ",np.arccos(neck_angle)*360/(np.pi*2))
-print("명치 각   : ",180-np.arccos(chest_angle)*360/(np.pi*2))
-print("엉덩이 각    : ",180-np.arccos(hip_angle)*360/(np.pi*2))
-"""
+right_antebrachial  = np.array([ys[10]-ys[11],xs[10]-xs[11]])
+right_forearm       = np.array([ys[12]-ys[11],xs[12]-xs[11]])
+right_back          = np.array([ys[7]-ys[12], xs[7]-xs[12]])
+right_arm_angle     = np.inner(right_antebrachial, right_forearm)/(np.linalg.norm(right_antebrachial)*np.linalg.norm(right_forearm))
+right_back_angle    = np.inner(right_back, right_forearm)/(np.linalg.norm(right_back)*np.linalg.norm(right_forearm))
 
 head_neck           = np.array([ys[9]-ys[8],xs[9]-xs[8]])
 chest_neck          = np.array([ys[7]-ys[8],xs[7]-xs[8]])
@@ -125,17 +117,28 @@ chest = np.arccos(chest_angle)*360/(np.pi*2)
 hip   = np.arccos(hip_angle)*360/(np.pi*2)
 
 if(170 <= neck < 180):   # 목 각도가 오차 범위를 벗어난 경우
-    np[8] = [1, 0, 0, 0.5]  # line color = red
-    np[7] = [1, 0, 0, 0.5]  # line color = red
+    c[8] = (1, 0, 0, 0.5)  # line color = red
+    c[7] = (1, 0, 0, 0.5)  # line color = red
 if(165 <= chest < 180):  # 가슴 각도가 오차 범위를 벗어난 경우
-    np[7] = [1, 0, 0, 0.5]  # line color = red
-    np[6] = [1, 0, 0, 0.5]  # line color = red
+    c[7] = (1, 0, 0, 0.5)  # line color = red
+    c[6] = (1, 0, 0, 0.5)  # line color = red
 if(165 <= hip < 180):    # 엉덩이 각도가 오차 범위를 벗어난 경우
-    np[6] = [1, 0, 0, 0.5]  # line color = red
-    np[5] = [1, 0, 0, 0.5]  # line color = red
-    np[4] = [1, 0, 0, 0.5]  # line color = red
-    np[3] = [1, 0, 0, 0.5]  # line color = red
-    np[2] = [1, 0, 0, 0.5]  # line color = red
+    c[6] = (1, 0, 0, 0.5)  # line color = red
+    c[5] = (1, 0, 0, 0.5)  # line color = red
+    c[4] = (1, 0, 0, 0.5)  # line color = red
+    c[3] = (1, 0, 0, 0.5)  # line color = red
+    c[2] = (1, 0, 0, 0.5)  # line color = red
+
+lc = mc.LineCollection(lines, colors=c,linewidths=2)
+ax.add_collection(lc)
+plt.scatter(ys, xs)
+
+#print("왼쪽 팔 각    : ",np.arccos(left_arm_angle)*360/(np.pi*2))
+#print("왼쪽 어깨 각   : ",180-np.arccos(left_back_angle)*360/(np.pi*2))
+#print("오른쪽 팔 각   : ",np.arccos(right_arm_angle)*360/(np.pi*2))
+#print("오른쪽 어깨 각 : ",180-np.arccos(right_back_angle)*360/(np.pi*2))
 
 
-plt.show()  # keypoint detection 이미지로 출력
+# 플랭크를 위한 다리 각도 계산
+
+plt.show() # keypoint detection 이미지로 출력
