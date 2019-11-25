@@ -9,10 +9,12 @@ from matplotlib import collections  as mc
 import time, math
 import PIL.ExifTags as ExifTags
 import cv2
+from realMain import fname
 
 # get video and slice into frame
-vidcap = cv2.VideoCapture('./stacked_hourglass/datasets/video/z.mp4')
+vidcap = cv2.VideoCapture(fname[0])
 img_loc = " "
+
 def getFrame(sec):
     vidcap.set(cv2.CAP_PROP_POS_MSEC,sec*1000)
     hasFrames,image = vidcap.read()
