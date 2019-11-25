@@ -310,12 +310,6 @@ class SelectFile(QWidget):
         self.pushButton.setText("동영상 파일 불러오기")
         self.pushButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
 
-        # 선택된 파일 위치 *********************************없어도 됨
-        self.label = QtWidgets.QLabel(self)
-        self.label.setGeometry(QtCore.QRect(150, 500, 700, 50))
-        self.label.setStyleSheet("color:\"black\";font: 12pt\"경기천년제목M Medium\";")
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-
         # 버튼 이벤트 - 홈 버튼 클릭 시
         self.homeButton.clicked.connect(self.home_clicked)
 
@@ -339,8 +333,11 @@ class SelectFile(QWidget):
 
     # pushButtonClicked 함수 선언 - 파일 불러오기 창 띄우기
     def pushButtonClicked(self):
-        fname = QFileDialog.getOpenFileName(self)
-        self.label.setText(fname[0])
+        fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
+        if fname[0]:            # videoToframe.py로 변수 전달
+            print(fname[0])
+        else:
+            QMessageBox.about(self, "Warning", "파일을 선택하지 않았습니다.")
 
 # How to Use(전체 설명) 페이지
 class HowtoUse(object):
