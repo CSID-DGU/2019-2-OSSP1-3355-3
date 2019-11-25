@@ -1,10 +1,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-from videoToframe import *
+import test_plank
 
-
-global fname
+global filename
 
 # 메인 페이지
 class Ui_homePT(object):
@@ -337,10 +336,10 @@ class SelectFile(QWidget):
 
     # pushButtonClicked 함수 선언 - 파일 불러오기 창 띄우기
     def pushButtonClicked(self):
-        global fname
         fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
-        if fname[0]:            # videoToframe.py로 변수 전달
-            print(fname[0])
+        filename = fname[0]
+        if filename:            # videoToframe.py로 변수 전달
+            print(filename)
 
         else:
             QMessageBox.about(self, "Warning", "파일을 선택하지 않았습니다.")
