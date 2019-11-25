@@ -9,18 +9,40 @@ from matplotlib import collections  as mc
 import time, math
 import PIL.ExifTags as ExifTags
 import cv2
-from realMain import fname
+import os
 
 # get video and slice into frame
-vidcap = cv2.VideoCapture(fname[0])
-img_loc = " "
+viddir = 'C:/Users/ysk78/PycharmProjects/3355/jin.mp4'
+vidcap = cv2.VideoCapture(viddir)
+vidlen = len(viddir)
+except_filename = 0
+for i in range(vidlen-1,-1,-1):
+    if viddir[i] == '/':
+        except_filename = i
+        break
+viddir = viddir[0:except_filename+1]
 
+img_name = " "
+
+#make folder
+def createFolder(directory):
+    try:
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+    except OSError:
+        print ('Error: Creating directory. ' + directory)
+createFolder(viddir+'/tmp+img')
+
+#make frame and store folder
 def getFrame(sec):
     vidcap.set(cv2.CAP_PROP_POS_MSEC,sec*1000)
     hasFrames,image = vidcap.read()
+    base_dir = viddir+'/tmp+img'
+    os.chdir(base_dir)
+    os.getcwd()
     if hasFrames:
-        img_loc = "image"+str(count)+".jpg"
-        cv2.imwrite(img_loc, image)     # save frame as JPG file
+        img_name = "image"+str(count)+".jpg"
+        cv2.imwrite(img_name, image)     # save frame as JPG file
     return hasFrames
 sec = 0
 frameRate = 0.1 #//it will capture image in each 0.5 second
