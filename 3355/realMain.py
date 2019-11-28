@@ -1,7 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-import test_plank
+# import test_plank
+
 
 global filename
 
@@ -338,11 +339,14 @@ class SelectFile(QWidget):
     def pushButtonClicked(self):
         fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
         filename = fname[0]
-        if filename:            # videoToframe.py로 변수 전달
+        if filename:            # test_plank.py로 변수 전달
             print(filename)
-
         else:
-            QMessageBox.about(self, "Warning", "파일을 선택하지 않았습니다.")
+            msg = QMessageBox()
+            msg.setWindowTitle("Failed to open video file")
+            msg.setText("파일 불러오기에 실패했습니다. 다시 시도하세요.")
+            msg.setIcon(QMessageBox.Critical)
+            x = msg.exec_()
 
 # How to Use(전체 설명) 페이지
 class HowtoUse(object):
