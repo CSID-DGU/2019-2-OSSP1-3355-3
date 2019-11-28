@@ -1,10 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-# import test_plank
+from test_plank import test_plank
 
-
-global filename
 
 # 메인 페이지
 class Ui_homePT(object):
@@ -332,6 +330,7 @@ class SelectFile(QWidget):
     # back_clicked 함수 선언 - 이전 페이지로 돌아감
     def back_clicked(self):
         self.label.setText("") # 파일명 초기화
+        
         selectFi.close()
         selectEx.show()
 
@@ -339,7 +338,8 @@ class SelectFile(QWidget):
     def pushButtonClicked(self):
         fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
         filename = fname[0]
-        if filename:            # test_plank.py로 변수 전달
+        if filename:            # videoToframe.py로 변수 전달
+            test_plank(filename)
             print(filename)
         else:
             msg = QMessageBox()
@@ -721,3 +721,4 @@ if __name__ == "__main__":
     ui6.setupUi(how3)
 
     sys.exit(app.exec_())
+
