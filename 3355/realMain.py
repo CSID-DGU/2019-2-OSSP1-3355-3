@@ -329,8 +329,6 @@ class SelectFile(QWidget):
 
     # back_clicked 함수 선언 - 이전 페이지로 돌아감
     def back_clicked(self):
-        self.label.setText("") # 파일명 초기화
-        
         selectFi.close()
         selectEx.show()
 
