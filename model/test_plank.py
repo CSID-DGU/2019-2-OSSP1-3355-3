@@ -195,6 +195,3 @@ class test_plank:
         # 플랭크를 위한 다리 각도 계산
 
         plt.show()  # keypoint detection 이미지로 출력
-
-if __name__ == '__main__':
-    test_plank('C:/Users/ysk78/PycharmProjects/3355/jin.mp4')
