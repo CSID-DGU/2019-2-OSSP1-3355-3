@@ -9,10 +9,10 @@ import time,cv2,json,os
 
 # ...load image of a person into a PyTorch tensor...
 
-name = "pullup3_2"
+name = "pullup3_1"
 
 model = hg8(pretrained=True)
-predictor = HumanPosePredictor(model, device='cpu')
+predictor = HumanPosePredictor(model, device='cuda')
 
 print("==model loaded==")
 
@@ -56,7 +56,7 @@ for i in images:
     orgImg = cv2.line(orgImg, (ys[14], xs[14]), (ys[13], xs[13]), (255, 0, 0),2) #오른쪽 이두
     orgImg = cv2.line(orgImg, (ys[7], xs[7]), (ys[13], xs[13]), (10, 250, 70), 2) #오른쪽 광배
     orgImg = cv2.line(orgImg, (ys[14], xs[14]), (ys[15], xs[15]), (255, 0, 0), 2)
-    cv2.imshow('image',orgImg)
+    cv2.imshow('image',cv2.cvtColor(orgImg, cv2.COLOR_BGR2RGB))
     img_array.append(orgImg)
 
     result["frames"][idx] = joints.numpy().tolist()
@@ -64,7 +64,7 @@ for i in images:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-out = cv2.VideoWriter('seungyoun_pullup.avi',cv2.VideoWriter_fourcc(*'DIVX'), 15, size)
+out = cv2.VideoWriter('seungyoun_pullup.avi',cv2.VideoWriter_fourcc(*'mp4v'), 30, size)
 for i in range(len(img_array)):
     out.write(img_array[i])
 out.release()
@@ -74,5 +74,4 @@ print(result)
 with open(name+'.json', 'w') as f:
     json.dump(result, f)
 
-cap.release()
 cv2.destroyAllWindows()
