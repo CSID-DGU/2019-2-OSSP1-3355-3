@@ -7,8 +7,8 @@ print(os.getcwd())
 
 # Folder which contains all the images
 # from which video is to be generated
-os.chdir("C:\\Users\\jw969\\PycharmProjects\\test\\pullup")
-path = "C:\\Users\\jw969\\PycharmProjects\\test\\pullup"
+os.chdir('C:/Users/jw969/Desktop/2019-2-OSSP1-3355-3-master/3355/성근')
+path = 'C:/Users/jw969/Desktop/2019-2-OSSP1-3355-3-master/3355/성근'
 
 mean_height = 0
 mean_width = 0
@@ -57,7 +57,7 @@ for file in os.listdir('.'):
 def generate_video():
     image_folder = '.'  # make sure to use your folder
     video_name = 'mygeneratedvideo.mp4'
-    os.chdir("C:\\Users\\jw969\\PycharmProjects\\test\\pullup")
+    os.chdir("C:/Users/jw969/Desktop/2019-2-OSSP1-3355-3-master/3355/성근")
 
     images = [img for img in os.listdir(image_folder)
               if img.endswith(".jpg") or
@@ -81,12 +81,27 @@ def generate_video():
         video.write(cv2.imread(os.path.join(image_folder, image)))
 
         # Deallocating memories taken for window creation
-    cv2.destroyAllWindows()
-    video.release()  # releasing the video generated
+   # cv2.destroyAllWindows()
+   # video.release()  # releasing the video generated
 
+def play_video():
+    capture = cv2.VideoCapture("C:/Users/jw969/Desktop/2019-2-OSSP1-3355-3-master/3355/성근/mygeneratedvideo.mp4")
+    while True:
+        if (capture.get(cv2.CAP_PROP_POS_FRAMES) == capture.get(cv2.CAP_PROP_FRAME_COUNT)):
+            capture.open("C:/Users/jw969/Desktop/2019-2-OSSP1-3355-3-master/3355/성근/mygeneratedvideo.mp4")
+
+        ret, frame = capture.read()
+        cv2.imshow("VideoFrame", frame)
+
+        if cv2.waitKey(33) > 0: break
+
+    capture.release()
+    cv2.destroyAllWindows()
 
 # Calling the generate_video function
 generate_video()
+play_video()
+
 
 
 
