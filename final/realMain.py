@@ -215,6 +215,8 @@ class Ui_selectExercise(object):
         selectFi.pixex = QPixmap("pullup.jpg") # 이미지 출력
         selectFi.pixexercise = selectFi.pixex.scaled(500, 300, QtCore.Qt.KeepAspectRatio)  # 이미지 사이즈 설정
         selectFi.ex.setPixmap(selectFi.pixexercise)
+        # 버튼 이벤트 - 파일 선택 클릭 시
+        selectFi.pushButton.clicked.connect(selectFi.pullup_pushButtonClicked)
         selectEx.close()
         selectFi.show()
 
@@ -224,6 +226,8 @@ class Ui_selectExercise(object):
         selectFi.pixex = QPixmap("squat.jpg")  # 이미지 출력
         selectFi.pixexercise = selectFi.pixex.scaled(500, 300, QtCore.Qt.KeepAspectRatio)  # 이미지 사이즈 설정
         selectFi.ex.setPixmap(selectFi.pixexercise)
+        # 버튼 이벤트 - 파일 선택 클릭 시
+        selectFi.pushButton.clicked.connect(selectFi.squat_pushButtonClicked)
         selectEx.close()
         selectFi.show()
 
@@ -233,6 +237,8 @@ class Ui_selectExercise(object):
         selectFi.pixex = QPixmap("plank.png")  # 이미지 출력
         selectFi.pixexercise = selectFi.pixex.scaled(500, 300, QtCore.Qt.KeepAspectRatio)  # 이미지 사이즈 설정
         selectFi.ex.setPixmap(selectFi.pixexercise)
+        # 버튼 이벤트 - 파일 선택 클릭 시
+        selectFi.pushButton.clicked.connect(selectFi.plank_pushButtonClicked)
         selectEx.close()
         selectFi.show()
 
@@ -242,6 +248,8 @@ class Ui_selectExercise(object):
         selectFi.pixex = QPixmap("runge.jpg")  # 이미지 출력
         selectFi.pixexercise = selectFi.pixex.scaled(500, 300, QtCore.Qt.KeepAspectRatio)  # 이미지 사이즈 설정
         selectFi.ex.setPixmap(selectFi.pixexercise)
+        # 버튼 이벤트 - 파일 선택 클릭 시
+        selectFi.pushButton.clicked.connect(selectFi.runge_pushButtonClicked)
         selectEx.close()
         selectFi.show()
 
@@ -318,8 +326,7 @@ class SelectFile(QWidget):
         # 버튼 이벤트 - 백 버튼 클릭 시
         self.backButton.clicked.connect(self.back_clicked)
 
-        # 버튼 이벤트 - 파일 선택 클릭 시
-        self.pushButton.clicked.connect(self.pushButtonClicked)
+
 
     # home_clicked 함수 선언 - 메인 페이지로 돌아감
     def home_clicked(self):
@@ -333,12 +340,50 @@ class SelectFile(QWidget):
         selectEx.show()
 
     # pushButtonClicked 함수 선언 - 파일 불러오기 창 띄우기
-    def pushButtonClicked(self):
+    def pullup_pushButtonClicked(self):
         fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
         filename = fname[0]
-        if filename:            # videoToframe.py로 변수 전달
+        if filename: # 파일 불러오기
+                print("1111")
+                # test_plank(filename)
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Failed to open video file")
+            msg.setText("파일 불러오기에 실패했습니다. 다시 시도하세요.")
+            msg.setIcon(QMessageBox.Critical)
+            x = msg.exec_()
+
+    def squat_pushButtonClicked(self):
+        fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
+        filename = fname[0]
+        if filename: # 파일 불러오기
+            print("2")
+            # test_plank(filename)
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Failed to open video file")
+            msg.setText("파일 불러오기에 실패했습니다. 다시 시도하세요.")
+            msg.setIcon(QMessageBox.Critical)
+            x = msg.exec_()
+
+    def plank_pushButtonClicked(self):
+        fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
+        filename = fname[0]
+        if filename: # 파일 불러오기
             test_plank(filename)
-            print(filename)
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("Failed to open video file")
+            msg.setText("파일 불러오기에 실패했습니다. 다시 시도하세요.")
+            msg.setIcon(QMessageBox.Critical)
+            x = msg.exec_()
+
+    def runge_pushButtonClicked(self):
+        fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
+        filename = fname[0]
+        if filename: # 파일 불러오기
+            print("4")
+            # test_plank(filename)
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Failed to open video file")
