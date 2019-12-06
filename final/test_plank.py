@@ -27,6 +27,19 @@ class test_plank:
             cv2.imwrite(img_name, image)  # save frame as JPG file
         return hasFrames
 
+    # play video
+    def play_video(self):
+        capture = cv2.VideoCapture("C:/Users/ysk78/PycharmProjects/3355/tmp+img/result.avi")
+        while True:
+            if (capture.get(cv2.CAP_PROP_POS_FRAMES) == capture.get(cv2.CAP_PROP_FRAME_COUNT)):
+                capture.open("C:/Users/ysk78/PycharmProjects/3355/tmp+img/result.avi")
+
+            ret, frame = capture.read()
+            cv2.imshow("VideoFrame", frame)
+
+            if cv2.waitKey(33) > 0: break
+        capture.release()
+
     def __init__(self, fn):
 
         filename = fn
@@ -165,7 +178,8 @@ class test_plank:
             orgImg = cv2.line(orgImg, (ys[7], xs[7]), (ys[13], xs[13]), c[13], 2)  # 오른쪽 광배
             orgImg = cv2.line(orgImg, (ys[14], xs[14]), (ys[15], xs[15]), c[14], 2)
 
-            cv2.imshow('image', cv2.cvtColor(orgImg, cv2.COLOR_BGR2RGB))
+            # image show
+            # cv2.imshow('image', cv2.cvtColor(orgImg, cv2.COLOR_BGR2RGB))
             img_array.append(cv2.cvtColor(orgImg, cv2.COLOR_BGR2RGB))
 
             result["frames"][idx] = joints.numpy().tolist()
@@ -182,5 +196,7 @@ class test_plank:
 
         with open(name + '.json', 'w') as f:
             json.dump(result, f)
+
+        self.play_video()
 
         cv2.destroyAllWindows()
