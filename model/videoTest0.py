@@ -13,9 +13,9 @@ from predict_arm_angle import *
 
 # ...load image of a person into a PyTorch tensor...
 
-name = "pullup3_1"
+name = "IMG_4529"
 
-predictor = HumanPosePredictor(hg8(pretrained=True), device='cpu')
+predictor = HumanPosePredictor(hg8(pretrained=True), device='cuda')
 angle_predictor = arm_angle_predict()
 model = xgb.XGBClassifier(max_depth=3, learning_rate=0.1, n_estimators=100,
                       silent=True, objective='binary:logistic',
@@ -44,6 +44,18 @@ def smoothListGaussian(list, degree=5):
     for i in range(len(smoothed)):
         smoothed[i] = sum(np.array(list[i:i+window])*weight)/sum(weight)
     return smoothed
+def decide(past, now):
+    if(past is None):
+        return -1
+    else:
+        if((past<=0.35) and (now>0.9) ):
+            #up
+            return 1
+        elif((past>0.9) and (now<=0.35)):
+            #down
+            return 0
+        else:
+            return -1
 
 RGB_MEAN = torch.as_tensor([0.4404, 0.4440, 0.4327])
 RGB_STDDEV = torch.as_tensor([0.2458, 0.2410, 0.2468])
@@ -55,12 +67,14 @@ print("frames : ",len(images))
 result = {"name"  : name,
           "frames": dict()}
 
-count = 0
+
+threshold = 0.4
 img_array = list()
 testResult = list()
 for i in images:
     print("!precessing "+str(i))
     orgImg = Image.open("./video/"+name+"/"+i)
+    orgImg=orgImg.rotate(270, expand=True)
 
     try:
         for orientation in ExifTags.TAGS.keys() :
@@ -88,6 +102,17 @@ for i in images:
     testResult.append(prob)
     #smoothing = convolve(testResult[:], g)
     smoothing = smoothListGaussian(testResult[:])
+    ascending = True
+    descending = False
+    count = 0
+    for p in range(1,len(smoothing)-1):
+        if((smoothing[p]<threshold and smoothing[p+1]>=threshold) and ascending):
+            ascending = False
+            descending = True
+        elif((smoothing[p]>threshold and smoothing[p+1]<=threshold) and descending):
+            ascending = True
+            descending = False
+            count += 1
 
     orgImg = np.array(orgImg)
     height, width, layers = orgImg.shape
@@ -110,6 +135,7 @@ for i in images:
     if(len(smoothing)>0):
         print(smoothing)
         orgImg = cv2.putText(orgImg, str(smoothing[-1]), (30, 30) , cv2.FONT_HERSHEY_SIMPLEX , 1, (255, 0, 0) , 2, cv2.LINE_AA)
+        orgImg = cv2.putText(orgImg, "count : "+str(count), (30, 75) , cv2.FONT_HERSHEY_SIMPLEX , 1, (255, 0, 0) , 2, cv2.LINE_AA)
 
     cv2.imshow('image',cv2.cvtColor(orgImg, cv2.COLOR_BGR2RGB))
     img_array.append(cv2.cvtColor(orgImg, cv2.COLOR_BGR2RGB))
