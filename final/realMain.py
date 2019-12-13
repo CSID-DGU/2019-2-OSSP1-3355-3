@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from test_plank import test_plank
+from show_result import show_result
 
 
 # 메인 페이지
@@ -344,7 +345,8 @@ class SelectFile(QWidget):
         fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
         filename = fname[0]
         if filename: # 파일 불러오기
-                print("1111")
+            print("1111")
+
                 # test_plank(filename)
         else:
             msg = QMessageBox()
@@ -358,6 +360,7 @@ class SelectFile(QWidget):
         filename = fname[0]
         if filename: # 파일 불러오기
             print("2")
+
             # test_plank(filename)
         else:
             msg = QMessageBox()
@@ -370,7 +373,9 @@ class SelectFile(QWidget):
         fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
         filename = fname[0]
         if filename: # 파일 불러오기
-            test_plank(filename)
+            #test_plank(filename)
+            result.show()
+
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Failed to open video file")
@@ -383,6 +388,7 @@ class SelectFile(QWidget):
         filename = fname[0]
         if filename: # 파일 불러오기
             print("4")
+
             # test_plank(filename)
         else:
             msg = QMessageBox()
@@ -762,6 +768,10 @@ if __name__ == "__main__":
     how3 = QtWidgets.QDialog()
     ui6 = HowtoUse_step3()
     ui6.setupUi(how3)
+
+    # 결과 화면
+    result = show_result()
+
 
     sys.exit(app.exec_())
 
