@@ -1,9 +1,11 @@
+import os
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from test_plank import test_plank
 from show_result import show_result
-
+import shutil
 
 # 메인 페이지
 class Ui_homePT(object):
@@ -345,20 +347,24 @@ class SelectFile(QWidget):
         fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
         filename = fname[0]
         if filename: # 파일 불러오기
+            if os.path.isdir('./tmp+img'):
+                shutil.rmtree('./tmp+img')  # 폴더 삭제
             print("1111")
-
-                # test_plank(filename)
+            # test_plank(filename)
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Failed to open video file")
             msg.setText("파일 불러오기에 실패했습니다. 다시 시도하세요.")
             msg.setIcon(QMessageBox.Critical)
-            x = msg.exec_()
+            msg.exec_()
+
 
     def squat_pushButtonClicked(self):
         fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
         filename = fname[0]
         if filename: # 파일 불러오기
+            if os.path.isdir('./tmp+img'):
+                shutil.rmtree('./tmp+img')  # 폴더 삭제
             print("2")
 
             # test_plank(filename)
@@ -367,26 +373,29 @@ class SelectFile(QWidget):
             msg.setWindowTitle("Failed to open video file")
             msg.setText("파일 불러오기에 실패했습니다. 다시 시도하세요.")
             msg.setIcon(QMessageBox.Critical)
-            x = msg.exec_()
+            msg.exec_()
 
     def plank_pushButtonClicked(self):
         fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
         filename = fname[0]
         if filename: # 파일 불러오기
-            #test_plank(filename)
+            if os.path.isdir('./tmp+img'):
+                shutil.rmtree('./tmp+img') # 폴더 삭제
+            test_plank(filename)
             result.show()
-
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Failed to open video file")
             msg.setText("파일 불러오기에 실패했습니다. 다시 시도하세요.")
             msg.setIcon(QMessageBox.Critical)
-            x = msg.exec_()
+            msg.exec_()
 
     def runge_pushButtonClicked(self):
         fname = QFileDialog.getOpenFileName(self, 'Open file', "", "Video File(*.avi, *.mp4)")
         filename = fname[0]
         if filename: # 파일 불러오기
+            if os.path.isdir('./tmp+img'):
+                shutil.rmtree('./tmp+img')  # 폴더 삭제
             print("4")
 
             # test_plank(filename)
@@ -395,7 +404,7 @@ class SelectFile(QWidget):
             msg.setWindowTitle("Failed to open video file")
             msg.setText("파일 불러오기에 실패했습니다. 다시 시도하세요.")
             msg.setIcon(QMessageBox.Critical)
-            x = msg.exec_()
+            msg.exec_()
 
 # How to Use(전체 설명) 페이지
 class HowtoUse(object):
