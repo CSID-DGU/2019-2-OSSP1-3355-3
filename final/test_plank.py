@@ -186,8 +186,6 @@ class test_plank:
         with open(name + '.json', 'w') as f:
             json.dump(result, f)
 
-
-
         #shutil.rmtree('C:/Users/ysk78/PycharmProjects/3355/tmp+img')  #### 이 부분 수정하자
 
         cv2.destroyAllWindows()
