@@ -4,6 +4,8 @@ from PIL import Image
 import torch
 import numpy as np
 import time,cv2,json,os
+import shutil
+
 
 # ...load image of a person into a PyTorch tensor...
 class test_plank:
@@ -26,19 +28,6 @@ class test_plank:
             img_name = str(count) + ".jpg"
             cv2.imwrite(img_name, image)  # save frame as JPG file
         return hasFrames
-
-    # play video
-    def play_video(self):
-        capture = cv2.VideoCapture("C:/Users/ysk78/PycharmProjects/3355/tmp+img/result.avi")
-        while True:
-            if (capture.get(cv2.CAP_PROP_POS_FRAMES) == capture.get(cv2.CAP_PROP_FRAME_COUNT)):
-                capture.open("C:/Users/ysk78/PycharmProjects/3355/tmp+img/result.avi")
-
-            ret, frame = capture.read()
-            cv2.imshow("VideoFrame", frame)
-
-            if cv2.waitKey(33) > 0: break
-        capture.release()
 
     def __init__(self, fn):
 
@@ -197,6 +186,8 @@ class test_plank:
         with open(name + '.json', 'w') as f:
             json.dump(result, f)
 
-        self.play_video()
+
+
+        #shutil.rmtree('C:/Users/ysk78/PycharmProjects/3355/tmp+img')  #### 이 부분 수정하자
 
         cv2.destroyAllWindows()
