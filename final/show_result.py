@@ -8,8 +8,6 @@ class ShowVideo(QtCore.QObject):
 
     flag = 0
 
-
-
     VideoSignal1 = QtCore.pyqtSignal(QtGui.QImage)
 
     def __init__(self, parent=None):
@@ -18,10 +16,10 @@ class ShowVideo(QtCore.QObject):
     @QtCore.pyqtSlot()
     def startVideo(self):
         global image
-        capture = cv2.VideoCapture("C:/Users/ysk78/PycharmProjects/3355/tmp+img/result.avi")
+        capture = cv2.VideoCapture("./result.avi")
         while True:
             if (capture.get(cv2.CAP_PROP_POS_FRAMES) == capture.get(cv2.CAP_PROP_FRAME_COUNT)):
-                capture.open("C:/Users/ysk78/PycharmProjects/3355/tmp+img/result.avi")
+                capture.open("./result.avi")
 
             ret, image = capture.read()
             if ret:
@@ -50,23 +48,6 @@ class show_result(QWidget):
         icon.addPixmap(QtGui.QPixmap(pixicon), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.setWindowIcon(icon)
 
-        # 홈버튼
-        icon1 = QtGui.QIcon('home.png')  # 홈버튼 이미지
-        self.homeButton = QtWidgets.QPushButton(self)
-        self.homeButton.setGeometry(QtCore.QRect(790, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
-        self.homeButton.setIcon(icon1)  # 이미지 설정
-        self.homeButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
-        self.homeButton.setStyleSheet('QPushButton{border: 0px solid;}')
-        # 클릭 시 홈화면으로 이동하도록
-
-        # 이전버튼
-        icon2 = QtGui.QIcon('backButton.png')  # 홈버튼 이미지
-        self.backButton = QtWidgets.QPushButton(self)
-        self.backButton.setGeometry(QtCore.QRect(20, 20, 40, 40))  # 버튼 위치 및 사이즈 설정
-        self.backButton.setIcon(icon2)  # 이미지 설정
-        self.backButton.setIconSize(QtCore.QSize(40, 40))  # 아이콘 사이즈 조정
-        self.backButton.setStyleSheet('QPushButton{border: 0px solid;}')
-        # 클릭 시 이전화면으로 이동하도록
 
         # 스타일시트
         self.setStyleSheet("font: 24pt\"경기천년제목M Medium\"; background-color:\"Aliceblue\";")
@@ -86,11 +67,3 @@ class show_result(QWidget):
         self.pushButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
 
         self.pushButton.clicked.connect(ShowVideo.startVideo)
-
-
-
-
-
-
-
-
