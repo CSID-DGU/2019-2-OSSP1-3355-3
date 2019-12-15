@@ -4,6 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from test_plank import test_plank
+from test_pullup import test_pullup
 from show_result import show_result
 import shutil
 
@@ -349,8 +350,10 @@ class SelectFile(QWidget):
         if filename: # 파일 불러오기
             if os.path.isdir('./tmp+img'):
                 shutil.rmtree('./tmp+img')  # 폴더 삭제
-            print("1111")
-            # test_plank(filename)
+            print(filename)
+            test_pullup(filename)
+            result.show()
+
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Failed to open video file")
@@ -778,9 +781,9 @@ if __name__ == "__main__":
     ui6 = HowtoUse_step3()
     ui6.setupUi(how3)
 
+    print("showing result");
     # 결과 화면
     result = show_result()
 
 
     sys.exit(app.exec_())
-

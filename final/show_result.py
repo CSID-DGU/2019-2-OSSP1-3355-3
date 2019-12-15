@@ -4,10 +4,22 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sys
 
+def ResizeWithAspectRatio(image, width=None, height=None, inter=cv2.INTER_AREA):
+    dim = None
+    (h, w) = image.shape[:2]
+
+    if width is None and height is None:
+        return image
+    if width is None:
+        r = height / float(h)
+        dim = (int(w * r), height)
+    else:
+        r = width / float(w)
+        dim = (width, int(h * r))
+
+    return cv2.resize(image, dim, interpolation=inter)
+
 class ShowVideo(QtCore.QObject):
-
-    flag = 0
-
     VideoSignal1 = QtCore.pyqtSignal(QtGui.QImage)
 
     def __init__(self, parent=None):
@@ -16,16 +28,19 @@ class ShowVideo(QtCore.QObject):
     @QtCore.pyqtSlot()
     def startVideo(self):
         global image
+
+        # result 영상 불러오기
         capture = cv2.VideoCapture("./result.avi")
         while True:
             if (capture.get(cv2.CAP_PROP_POS_FRAMES) == capture.get(cv2.CAP_PROP_FRAME_COUNT)):
                 capture.open("./result.avi")
 
+            # 프레임별로 쪼개서 화면에 출력
             ret, image = capture.read()
             if ret:
-                cv2.imshow("VideoFrame", image)
+                cv2.imshow("VideoFrame", ResizeWithAspectRatio(image, width=640))
 
-                if cv2.waitKey(1) & 0xFF == ord('q'):
+                if cv2.waitKey(33) & 0xFF == ord('q'):
                     break
             else:
                 break
@@ -60,10 +75,11 @@ class show_result(QWidget):
         self.textlabel.setStyleSheet("color:\"black\";font: 26pt\"경기천년제목M Medium\";")
         self.textlabel.setAlignment(QtCore.Qt.AlignCenter)
 
-        # 파일 선택 버튼
+        # 결과 확인 버튼
         self.pushButton = QtWidgets.QPushButton(self)
         self.pushButton.setGeometry(QtCore.QRect(215, 450, 440, 40))  # 버튼 위치 및 사이즈 설정
         self.pushButton.setText("결과화면 재생")
         self.pushButton.setStyleSheet("background-color:\"Dodgerblue\"; color:\"white\";font: 16pt\"경기천년제목M Medium\";")
 
+        # 버튼을 클릭하면 영상 재생
         self.pushButton.clicked.connect(ShowVideo.startVideo)
