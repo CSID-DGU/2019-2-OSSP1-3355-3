@@ -27,9 +27,9 @@
   - [x] Make Logo
   - [x] put image in GUI
   - [x] button event
-- [ ] keypoint detection - more accurate ver
+- [x] keypoint detection - more accurate ver
 - [x] PyQt GUI
-- [ ] person detection
-- [ ] pose estimation (LSTM)
+- [x] person detection
+- [x] pose estimation (LSTM)
 
 
