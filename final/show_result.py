@@ -4,22 +4,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sys
 
-def ResizeWithAspectRatio(image, width=None, height=None, inter=cv2.INTER_AREA):
-    dim = None
-    (h, w) = image.shape[:2]
-
-    if width is None and height is None:
-        return image
-    if width is None:
-        r = height / float(h)
-        dim = (int(w * r), height)
-    else:
-        r = width / float(w)
-        dim = (width, int(h * r))
-
-    return cv2.resize(image, dim, interpolation=inter)
-
 class ShowVideo(QtCore.QObject):
+
     VideoSignal1 = QtCore.pyqtSignal(QtGui.QImage)
 
     def __init__(self, parent=None):
@@ -38,9 +24,9 @@ class ShowVideo(QtCore.QObject):
             # 프레임별로 쪼개서 화면에 출력
             ret, image = capture.read()
             if ret:
-                cv2.imshow("VideoFrame", ResizeWithAspectRatio(image, width=640))
+                cv2.imshow("VideoFrame", image)
 
-                if cv2.waitKey(33) & 0xFF == ord('q'):
+                if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
             else:
                 break
