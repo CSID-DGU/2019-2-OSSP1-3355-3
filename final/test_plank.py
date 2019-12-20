@@ -72,7 +72,7 @@ class test_plank:
 
         # hg8 모델을 불러옴
         model = hg8(pretrained=True)
-        predictor = HumanPosePredictor(model, device='cpu')
+        predictor = HumanPosePredictor(model, device='cuda')
 
         print("==model loaded==")
 

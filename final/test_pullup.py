@@ -176,12 +176,12 @@ class test_pullup:
             sec = round(sec, 2)
             success = self.getFrame(sec, vidcap, viddir, count)
 
-        self.predictor = HumanPosePredictor(hg8(pretrained=True), device='cpu')
+        self.predictor = HumanPosePredictor(hg8(pretrained=True), device='cuda')
         print("==model loaded==")
         # ...load image of a person into a PyTorch tensor...
 
         name = ""
-        predictor = HumanPosePredictor(hg8(pretrained=True), device='cpu')
+        predictor = HumanPosePredictor(hg8(pretrained=True), device='cuda')
         model = xgb.XGBClassifier(max_depth=3, learning_rate=0.1, n_estimators=100,
                                   silent=True, objective='binary:logistic',
                                   booster='gbtree',
@@ -201,6 +201,7 @@ class test_pullup:
         RGB_STDDEV = torch.as_tensor([0.2458, 0.2410, 0.2468])
 
         images = os.listdir("./" + name)
+        print(images)
         images = sorted(images, key=lambda x: int(x.split(".")[0]))
         print("frames : ", len(images))
 
@@ -212,7 +213,7 @@ class test_pullup:
         testResult = list()
         for i in images:
             orgImg = Image.open("./" + name + i)
-            orgImg = orgImg.rotate(270, expand=True)
+            #orgImg = orgImg.rotate(270, expand=True)
             print("!precessing " + str(i))
 
             try:
@@ -237,16 +238,12 @@ class test_pullup:
             joints = predictor.estimate_joints(img, flip=True)
             xs, ys = list(joints[:, 0].numpy()), list(joints[:, 1].numpy())
 
-            print("flag[0]")
             angles = self.predictFromjoints(joints)
-            print("flag[1]")
 
             prob = model.predict_proba(np.asarray(angles).reshape(1, 4))[0][1]
-            print("flag[2]")
             testResult.append(prob)
-            # smoothing = convolve(testResult[:], g)
-            smoothing = self.smoothListGaussian(testResult[:])
-            print("flag[3]")
+            smoothing = convolve(testResult[:], g)
+            #smoothing = selfG.smoothListGaussian(testResult[:])
 
             ascending = True
             descending = False
@@ -264,6 +261,7 @@ class test_pullup:
             orgImg = np.array(orgImg)
             height, width, layers = orgImg.shape
             size = (width, height)
+            img_array.append(cv2.cvtColor(orgImg, cv2.COLOR_BGR2RGB))
             # orgImg = cv2.line(orgImg, (ys[0], xs[0]), (ys[1], xs[1]), (10, 255, 0), 2)
             # orgImg = cv2.line(orgImg, (ys[1], xs[1]), (ys[2], xs[2]), (50, 160, 50), 2)
             # orgImg = cv2.line(orgImg, (ys[5], xs[5]), (ys[4], xs[4]), (50, 0, 255), 2)
@@ -280,16 +278,13 @@ class test_pullup:
             orgImg = cv2.line(orgImg, (ys[7], xs[7]), (ys[13], xs[13]), (153, 255, 255), 3)  # 오른쪽 광배
             orgImg = cv2.line(orgImg, (ys[14], xs[14]), (ys[15], xs[15]), (153, 255, 255), 3)  # 오른쪽 전완
             if (len(smoothing) > 0):
-                print(smoothing)
                 orgImg = cv2.putText(orgImg, str(smoothing[-1]), (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2,
                                      cv2.LINE_AA)
                 orgImg = cv2.putText(orgImg, "count : " + str(count), (30, 75), cv2.FONT_HERSHEY_SIMPLEX, 1,
                                      (255, 0, 0), 2, cv2.LINE_AA)
 
-            cv2.imshow('image', cv2.cvtColor(orgImg, cv2.COLOR_BGR2RGB))
-            img_array.append(cv2.cvtColor(orgImg, cv2.COLOR_BGR2RGB))
+            #cv2.imshow('image', cv2.cvtColor(orgImg, cv2.COLOR_BGR2RGB))
 
-            result["frames"][idx] = joints.numpy().tolist()
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
@@ -299,9 +294,6 @@ class test_pullup:
             out.write(img_array[i])
         out.release()
 
-        print(result)
-
-        with open(name + '.json', 'w') as f:
-            json.dump(result, f)
+        print("done!")
 
         cv2.destroyAllWindows()

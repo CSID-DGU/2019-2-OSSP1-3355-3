@@ -350,7 +350,10 @@ class SelectFile(QWidget):
         if filename: # 파일 불러오기
             if os.path.isdir('./tmp+img'):
                 shutil.rmtree('./tmp+img')  # 폴더 삭제
+            print(filename)
             test_pullup(filename)
+            result.show()
+
         else:
             msg = QMessageBox()
             msg.setWindowTitle("Failed to open video file")
@@ -778,7 +781,9 @@ if __name__ == "__main__":
     ui6 = HowtoUse_step3()
     ui6.setupUi(how3)
 
+    print("showing result");
     # 결과 화면
     result = show_result()
+
 
     sys.exit(app.exec_())
